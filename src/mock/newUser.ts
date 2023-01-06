@@ -19,7 +19,6 @@ export default [
         //   res.end(`hello, ${reqbody}`);
         // },
         response: () => {
-            
            return  {
                 status: 200,
                 message:'success',

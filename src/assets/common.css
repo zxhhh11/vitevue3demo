@@ -108,32 +108,13 @@ box-sizing: border-box;
     width: 100%;
     padding: 0 20px 0 0;
 }
-.side-box{
-    height: 100%;
-    /* background-color: #fff; */
-}
-.el-aside{
-    background-color: #fff;
-    height: calc(100vh - 250px);
-}
-.side-box .tips{
-    margin-top: 8px;
-    background-color: #aaa;
-    height: 120px;
-}
 .el-main{
     --el-main-padding:8px;
 }
-.el-main main{
+.el-main>div{
     height: 100%;
+    width: 100%;
     background-color: #fff;
-}
-.search-box{
-    margin: 2px 0 2px 2px;
-    width: 198px;
-}
-.search-box .el-autocomplete{
-   
 }
 .el-container.box{
     flex-direction:column

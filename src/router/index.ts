@@ -22,7 +22,7 @@ import RoutesMapConfig from './routes';
 export const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/login',
+    redirect: '/guestManagerMod',
     meta: {
       title: '登录XX系统'
     }

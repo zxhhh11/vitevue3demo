@@ -31,6 +31,7 @@
       <el-button
      type="danger"
       text
+      link
       >修改密码</el-button
     >
   </el-col>
@@ -96,7 +97,7 @@ import axios from 'axios';
         region: ruleForm.region
       }).then(res=>{
        if(res.data.status===200){
-        router.push('/test');
+        router.push('/guestManagerMod');
        }
       })
       //   handleLogin({

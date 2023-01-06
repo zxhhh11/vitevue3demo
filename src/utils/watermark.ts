@@ -15,7 +15,7 @@ export const getmark = () => {
       const cans = can.getContext("2d")!;
       //旋转角度
       cans.rotate((-15 * Math.PI) / 180);
-      cans.font = "18px Vedana";
+      cans.font = "16px Vedana";
       //设置填充绘画的颜色、渐变或者模式
       cans.fillStyle = "rgba(200, 200, 200, 0.40)";
       // cans.fillStyle = "#666";

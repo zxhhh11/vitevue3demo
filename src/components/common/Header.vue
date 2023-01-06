@@ -1,6 +1,9 @@
 <script lang="ts" setup>
 import logoImg from '@/assets/images/head_logo.png';
 import { ref,reactive,toRefs } from 'vue'
+import { UserFilled } from '@element-plus/icons-vue';
+import { useRouter } from 'vue-router';
+const router = useRouter();
 const activeIndex = ref('1')
 const activeIndex2 = ref('1')
 const handleSelect = (key: string, keyPath: string[]) => {
@@ -54,7 +57,9 @@ const gridData = [
     address: 'New York City',
   },
 ]
-
+const logout = ()=>{
+  router.push('/')
+}
 </script>
 
 <template>
@@ -62,8 +67,8 @@ const gridData = [
     <span class="logo">
         <img :src="logoImg" alt="" />
     </span>
-  <!-- <div> -->
-    <div class="call-box">
+    <span class="title">信用卡分行服务系统</span>
+    <!-- <div class="call-box">
       <el-popover placement="bottom" width="500px" trigger="click" popper-class="custom-phone">
       <template #reference>
         <span class="call"> 
@@ -130,35 +135,34 @@ const gridData = [
               </div>
             </div>
     </el-popover>
-     
-
-    </div>
-    <el-menu
-    :default-active="activeIndex2"
-    class="el-menu-demo"
-    mode="horizontal"
-    background-color="#545c64"
-    text-color="#fff"
-    active-text-color="#ffd04b"
-    @select="handleSelect"
-  >
-    <el-menu-item index="1">Processing Center</el-menu-item>
-    <el-sub-menu index="2">
-      <template #title>Workspace</template>
-      <el-menu-item index="2-1">item one</el-menu-item>
-      <el-menu-item index="2-2">item two</el-menu-item>
-      <el-menu-item index="2-3">item three</el-menu-item>
-      <el-sub-menu index="2-4">
-        <template #title>item four</template>
-        <el-menu-item index="2-4-1">item one</el-menu-item>
-        <el-menu-item index="2-4-2">item two</el-menu-item>
-        <el-menu-item index="2-4-3">item three</el-menu-item>
-      </el-sub-menu>
-    </el-sub-menu>
-    <el-menu-item index="3" disabled>Info</el-menu-item>
-    <el-menu-item index="4">Orders</el-menu-item>
-  </el-menu>
-  <!-- </div> -->
+    </div> -->
+   <div class="customer-box">
+   <span class="customer-item">
+    <label for="">客户姓名：</label>
+    <span>赵某某</span>
+   </span>
+   <span class="customer-item">
+    <label for="">证件类型：</label>
+    <span>身份证</span>
+   </span>
+   <span class="customer-item">
+    <label for="">证件号码：</label>
+    <span>235546541655498</span>
+   </span>
+   <span class="customer-item">
+    <label for="">卡号：</label>
+    <span>623548951236656666</span>
+   </span>
+   <span class="customer-item">
+    <label for="">客户号：</label>
+    <span>5652321</span>
+   </span>
+   <span class="customer-item">
+    <label for="">客户类型：</label>
+    <span>VIP</span>
+   </span>
+   </div>
+  <div class="user-avatar">  <el-avatar :icon="UserFilled" />&nbsp; 您好，李某某（0000005）&nbsp; <el-icon size="28px" class="logout" @click="logout"><SwitchButton /></el-icon></div>
  </el-header>
 </template>
 
@@ -175,14 +179,12 @@ const gridData = [
   line-height: 80px;
 }
 .logo img {
-    width: 198px;
+    width: 218px;
     height: 78px;
     margin: 1px;
   
 }
-.call-box{
-  
-}
+
 .call{
   display: flex;
   padding: 0 16px;
@@ -443,5 +445,39 @@ const gridData = [
 
 .custom-phone.el-popover.el-popper{
   padding: 0;
+}
+.el-header .title{
+  font-size: 28px;
+  padding: 0 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+.user-avatar{
+  float: right;
+  position: absolute;
+  right: 20px;
+}
+.user-avatar .el-avatar{
+vertical-align: middle;
+}
+.el-icon.logout{
+  font-size: 28px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.customer-box{
+  width: 500px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: absolute;
+    right: 300px;
+    background: rgb(255 255 255 / 20%);
+    justify-content: space-between;
+    padding: 0 10px;
+}
+.customer-box .customer-item{
+  height: 40px;
+  line-height: 40px;
 }
   </style>
