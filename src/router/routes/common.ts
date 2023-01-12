@@ -345,8 +345,16 @@ export const Router: Array<RouteRecordRaw> = [
       component: () =>
       import(/* webpackChunkName: "inquirTranFlow" */ '@/views/service/inquirTranFlow.vue')
     },
-    
   ]
-}
+},
+{
+  path: '/filter',
+  meta: {
+    title: '快速查找'
+  },
+  name: 'filter',
+  component: () =>
+  import(/* webpackChunkName: "filter" */ '@/views/filter.vue')
+},
 
 ]

@@ -60,6 +60,9 @@ const gridData = [
 const logout = ()=>{
   router.push('/')
 }
+const filterClick =()=>{
+  router.push('/filter')
+}
 </script>
 
 <template>
@@ -139,7 +142,10 @@ const logout = ()=>{
    <div class="customer-box">
    <span class="customer-item">
     <label for="">客户姓名：</label>
-    <span>赵某某</span>
+    <span>赵某某 </span>
+    <span class="filter-icon" @click="filterClick">
+      <el-icon ><Filter /></el-icon>
+    </span>
    </span>
    <span class="customer-item">
     <label for="">证件类型：</label>
@@ -475,9 +481,17 @@ vertical-align: middle;
     background: rgb(255 255 255 / 20%);
     justify-content: space-between;
     padding: 0 10px;
+    height: 70px;
+    margin: 5px 0 0;
 }
 .customer-box .customer-item{
-  height: 40px;
-  line-height: 40px;
+  height: 35px;
+  line-height: 35px;
+}
+.filter-icon{
+  cursor: pointer;
+}
+.filter-icon:hover{
+  color: #2eafe9;
 }
   </style>

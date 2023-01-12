@@ -20,5 +20,6 @@
     {
       "path": "./tsconfig.vitest.json"
     }
-  ]
+  ],
+  "declaration": false
 }

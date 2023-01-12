@@ -115,7 +115,30 @@ box-sizing: border-box;
     height: 100%;
     width: 100%;
     background-color: #fff;
+    padding: 8px;
 }
 .el-container.box{
     flex-direction:column
 }
+
+.el-descriptions__header .el-descriptions__title {
+    border-left: 4px solid #c70531;
+    padding: 0px 10px;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 2px 0 0;
+}
+.card-title {
+    /* font-size: 14px; */
+    font-weight: 600;
+    padding: 1px 10px;
+    border-left: 4px solid #c70531;
+    text-align: left;
+    margin: 4px;
+   
+   
+  }
+  .card-title  .add-info {
+    font-size: 0.7em;
+    font-weight: 400;
+  }

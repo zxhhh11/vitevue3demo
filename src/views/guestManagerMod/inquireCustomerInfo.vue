@@ -31,11 +31,68 @@
 <div> token验证---{{ tokenTest }}</div>
 
 <el-button type="primary" @click="changeCustomer">修改用户</el-button>
-<el-table :data="tableData" border style="width: 100%">
+
+<div class="list">
+  <CustomList
+          :list="customerInfoData"
+          :column="2"
+          :datas="customerInfo"
+          title="列表使用演示"
+        ></CustomList>
+</div>
+<br>
+<div class="custom-form">
+  <div class="card-title">快速查询</div>
+  <el-descriptions :column="2" class="query-box" size="small" border>
+            <el-descriptions-item
+              label="姓名"
+              label-class-name="my-label"
+              content-class-name="my-content"
+            >
+              <el-input
+                placeholder="请在此处输入用户姓名"
+                size="small"
+                v-model="name"
+                clearable
+              >
+              </el-input>
+            </el-descriptions-item>
+            <el-descriptions-item label="卡号">
+              <el-input
+                placeholder="请在此处输入信用卡号"
+                size="small"
+                v-model="creditCardNo"
+                clearable
+              >
+              </el-input>
+            </el-descriptions-item>
+            <el-descriptions-item label="手机号">
+              <el-input
+                placeholder="请在此处输入手机号"
+                size="small"
+                v-model="phoneNo"
+                clearable
+              >
+              </el-input>
+            </el-descriptions-item>
+            <el-descriptions-item label="证件号">
+              <el-input
+                placeholder="请在此处输入证件号"
+                size="small"
+                v-model="idNo"
+                clearable
+              >
+              </el-input>
+            </el-descriptions-item>
+          </el-descriptions>
+</div>
+<div class="custom-table">
+  <el-table :data="tableData" border style="width: 100%">
     <el-table-column prop="date" label="Date" width="180" />
     <el-table-column prop="name" label="Name" width="180" />
     <el-table-column prop="address" label="Address" />
   </el-table>
+</div>
   </div>
 </template>
 
@@ -45,11 +102,44 @@ import { ref, reactive, toRefs, onBeforeMount, onMounted, watchEffect, computed 
 import { useRoute, useRouter } from 'vue-router';
 import useStore  from '@/stores/index'
 import { storeToRefs } from 'pinia';
+import { customerInfoData } from '@/utils/data';
+import CustomList from '@/components/common/customList/index.vue';
+let data = reactive({
+  name: '',
+  creditCardNo: '',
+  phoneNo: '',
+  idNo: '',
+  currentPage: 1
+});
+let { name, creditCardNo, phoneNo, idNo,  currentPage} =
+  toRefs(data);
 const loginStatus = ref('')
 const tokenTest = ref('')
 const { counterStore ,userStore} = useStore()
 const {user,customer} = storeToRefs(userStore)
 const {changeUser} = userStore
+const customerInfo = [
+  {
+    CIFCMNO: '582995',
+    CUSTOMERNO: '86188216708',
+    CMNOTYPE: '客户号类型',
+    GRADE: '1',
+    CMTYPE: '个人',
+    LANG: '简体中文',
+    CORPORATION: '个人',
+    MARITALSTATUS: '已婚',
+    WORKFAXNO: '工作传真号码',
+    EDUCATION: '本科',
+    DUTY: '其它',
+    NATIONALITY: '中国',
+    IDENTIFY: '一级敏感要客（A）',
+    VIPIDENTIFY: '财富管理',
+    VIPVALIDITY: '2021-03-14——2050-12-31',
+    FAMILYNO: '3',
+    EMAIL: '***********@166.com',
+    SECURITYIDENTIFY: 'MMME'
+  }
+];
 const tableData = [
   {
     date: '2016-05-03',
@@ -84,7 +174,7 @@ const router = useRouter();
 /**
 * 数据部分
 */
-const data = reactive({})
+
 const changeCustomer = ()=>{
   console.log(customer,'customer')
   changeUser('钱小二')
@@ -111,9 +201,9 @@ onMounted(() => {
   // axios.post('/api/card/accountDetail',{"crcrdMgtAccno":"1"}).then(res=>{
   //   console.log(res,'res /card/accountDetail')
   // })
-  axios.post('http://22.188.151.161:81/card/accountDetail',{"crcrdMgtAccno":"1"}).then(res=>{
-    console.log(res,'res /card/accountDetail')
-  })
+  // axios.post('http://22.188.151.161:81/card/accountDetail',{"crcrdMgtAccno":"1"}).then(res=>{
+  //   console.log(res,'res /card/accountDetail')
+  // })
 })
 watchEffect(()=>{
 })
@@ -130,5 +220,16 @@ defineExpose({
 }
 .my-content {
   background: var(--el-color-danger-light-9);
+}
+.list{
+  width: 1000px;
+  margin-bottom: 20px;
+}
+.custom-form{
+  width: 1000px;
+  margin-bottom: 20px;
+}
+.custom-table{
+  width: 1000px;
 }
 </style>
