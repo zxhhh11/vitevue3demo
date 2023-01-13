@@ -58,116 +58,18 @@ const gridData = [
   },
 ]
 const logout = ()=>{
-  router.push('/')
+  router.push('/login')
 }
-const filterClick =()=>{
-  router.push('/filter')
-}
+
 </script>
 
 <template>
  <el-header>
-    <span class="logo">
+    <!-- <span class="logo">
         <img :src="logoImg" alt="" />
-    </span>
+    </span> -->
     <span class="title">信用卡分行服务系统</span>
-    <!-- <div class="call-box">
-      <el-popover placement="bottom" width="500px" trigger="click" popper-class="custom-phone">
-      <template #reference>
-        <span class="call"> 
-      <svg class="icon" aria-hidden="true">
-        <use xlink:href="#icon-phonelog"></use>
-      </svg>
-      <span class="text">拨号</span>
-      </span>
-      </template>
-      <div class="m-phonePanel panel panel-default">
-              <div class="panel-heading"> 软电话 </div>
-              <div class="panel-body clearfix">
-                <table
-                  cellpadding="0"
-                  cellspacing="0"
-                  class="table table-bordered text-center pull-left"
-                >
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>2</td>
-                      <td>3</td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>5</td>
-                      <td>6</td>
-                    </tr>
-                    <tr>
-                      <td>7</td>
-                      <td>8</td>
-                      <td>9</td>
-                    </tr>
-                    <tr>
-                      <td>*</td>
-                      <td>0</td>
-                      <td>#</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div class="pull-right ml15">
-                  <div class="tips"
-                    >请输入电话号码，外线请加前导码<br />
-                    例如 (982726522)</div
-                  >
-                  <div class="select-number">
-                    <el-select v-model="selectNum" placeholder="请选择">
-                      <el-option
-                        v-for="item in options"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value"
-                      >
-                      </el-option>
-                    </el-select>
-                  </div>
-                  <el-button-group>
-                    <el-button size="small" type="success">拨号</el-button>
-                    <el-button size="small" type="danger">清除</el-button>
-                    <el-button size="small">取消</el-button>
-                    <el-button size="small" type="primary">选择</el-button>
-                  </el-button-group>
-                </div>
-              </div>
-            </div>
-    </el-popover>
-    </div> -->
-   <div class="customer-box">
-   <span class="customer-item">
-    <label for="">客户姓名：</label>
-    <span>赵某某 </span>
-    <span class="filter-icon" @click="filterClick">
-      <el-icon ><Filter /></el-icon>
-    </span>
-   </span>
-   <span class="customer-item">
-    <label for="">证件类型：</label>
-    <span>身份证</span>
-   </span>
-   <span class="customer-item">
-    <label for="">证件号码：</label>
-    <span>235546541655498</span>
-   </span>
-   <span class="customer-item">
-    <label for="">卡号：</label>
-    <span>623548951236656666</span>
-   </span>
-   <span class="customer-item">
-    <label for="">客户号：</label>
-    <span>5652321</span>
-   </span>
-   <span class="customer-item">
-    <label for="">客户类型：</label>
-    <span>VIP</span>
-   </span>
-   </div>
+  
   <div class="user-avatar">  <el-avatar :icon="UserFilled" />&nbsp; 您好，李某某（0000005）&nbsp; <el-icon size="28px" class="logout" @click="logout"><SwitchButton /></el-icon></div>
  </el-header>
 </template>
@@ -177,10 +79,9 @@ const filterClick =()=>{
     display: flex;
 }
 .el-header .el-menu{
-    height: 80px;
+    height: 60px;
 }
-.logo {
-  /* display: inline-block; */
+/* .logo {
   height: 80px;
   line-height: 80px;
 }
@@ -188,8 +89,7 @@ const filterClick =()=>{
     width: 218px;
     height: 78px;
     margin: 1px;
-  
-}
+} */
 
 .call{
   display: flex;
@@ -198,7 +98,7 @@ const filterClick =()=>{
   width: 90px;
   text-align: center;
   flex-direction: column;
-  height: 80px;
+  height: 60px;
   align-items: center;
 }
 .call .text{
@@ -453,7 +353,7 @@ const filterClick =()=>{
   padding: 0;
 }
 .el-header .title{
-  font-size: 28px;
+  font-size: 34px;
   padding: 0 10px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -471,7 +371,7 @@ vertical-align: middle;
   vertical-align: middle;
   cursor: pointer;
 }
-.customer-box{
+/* .customer-box{
   width: 500px;
     display: flex;
     flex-direction: row;
@@ -487,11 +387,6 @@ vertical-align: middle;
 .customer-box .customer-item{
   height: 35px;
   line-height: 35px;
-}
-.filter-icon{
-  cursor: pointer;
-}
-.filter-icon:hover{
-  color: #2eafe9;
-}
+} */
+
   </style>

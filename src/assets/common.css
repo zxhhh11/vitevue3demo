@@ -103,19 +103,23 @@ box-sizing: border-box;
     background-color: #b50029;
     color: #fff;
     text-align: left;
-    height: 80px;
-    line-height: 80px;
+    height: 60px;
+    line-height: 60px;
     width: 100%;
     padding: 0 20px 0 0;
 }
-.el-main{
-    --el-main-padding:8px;
+.el-container .el-main{
+    height: calc(100vh - 90px);
 }
-.el-main>div{
-    height: 100%;
+.el-main{
+    --el-main-padding:8px 8px 0 8px;
+}
+.el-main>div.customer-box{
+    height: calc(100vh - 98px);
     width: 100%;
     background-color: #fff;
     padding: 8px;
+    overflow-y: auto;
 }
 .el-container.box{
     flex-direction:column
@@ -141,4 +145,13 @@ box-sizing: border-box;
   .card-title  .add-info {
     font-size: 0.7em;
     font-weight: 400;
+  }
+
+  .el-footer{
+    --el-footer-height: 30px;
+    height: 30px;
+    background: #fff;
+    text-align: right;
+    border-top:2px solid #dfdfff;
+    background: #f0fbfa;
   }

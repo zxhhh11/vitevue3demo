@@ -187,7 +187,7 @@ onMounted(() => {
         </el-menu> 
       </el-scrollbar>
         </el-aside>
-        <div class="tips">
+        <!-- <div class="tips">
 
           <el-menu
           :default-active="onRoutes"
@@ -231,14 +231,14 @@ onMounted(() => {
             </template>
           </template>
         </el-menu>
-        </div>
+        </div> -->
 </div>
 
 </template>
 
 <style>
 .side-box{
-    height: calc(100vh - 80px);
+    height: calc(100vh - 90px);
     display: flex;
     flex-direction: column;
 }
