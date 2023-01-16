@@ -155,3 +155,14 @@ box-sizing: border-box;
     border-top:2px solid #dfdfff;
     background: #f0fbfa;
   }
+ 
+  .el-descriptions__label.hide-label{
+    display: none;
+  }
+ /* table tr th{
+    background-color: #d2f4f9;
+  } */
+  .el-table th.el-table__cell{
+    background-color: #d2f4f9;
+    color: blue;
+  }

@@ -1,12 +1,9 @@
 <template>
   <div>
     <div class="custom-form">
-  <div class="card-title">快速查询</div>
-  <el-radio-group v-model="radio3" class="ml-4">
-     
-    
-   
-  <el-descriptions :column="1" class="query-box" size="small" border>
+ 
+      <el-radio-group v-model="radio3" class="ml-4">
+        <el-descriptions :column="1" class="query-box" size="small" border>
             <el-descriptions-item>
                 <template #label>
                     <el-radio label="1" size="small">按卡号查询</el-radio>
@@ -42,8 +39,8 @@
              <div><el-button type="primary">查询</el-button></div>
             </el-descriptions-item>
           </el-descriptions> 
-        </el-radio-group>
-</div>
+      </el-radio-group>
+    </div>
   </div>
 </template>
 
@@ -95,16 +92,19 @@ defineExpose({
 })
 
 </script>
-<style scoped>
+<style>
 /* .custom-form{
-  width: 1000px;
+  
   margin-bottom: 20px;
 } */
 .custom-form .el-descriptions .el-input {
-    width: 80%;
+    /* width: 80%; */
     margin-right: 20px;
 }
 .el-radio-group .el-descriptions{
-    width: 800px;
+  /* width: 1000px; */
+}
+.custom-form .el-descriptions.query-box .el-input__inner{
+  /* width: 500px; */
 }
 </style>

@@ -184,6 +184,7 @@ onBeforeMount(() => {
 })
 onMounted(() => {
   let params={"userid":"666778","cradno":"616161616161616161"}
+  console.log('test ......')
   //console.log('3.-组件挂载到页面之后执行-------onMounted')
   // axios.post('/login/queryByCard',params).then(res=>{
   //   console.log(res.data,'res token')

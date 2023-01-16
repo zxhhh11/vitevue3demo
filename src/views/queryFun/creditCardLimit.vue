@@ -7,7 +7,7 @@
           :list="creditCardList"
           :column="2"
           :datas="creditCardDatas"
-          title="列表使用演示2"
+         
         >
         <template #addItem>
             <el-descriptions-item
@@ -87,6 +87,6 @@ defineExpose({
   background: var(--el-color-danger-light-9);
 }
 .el-descriptions__content .el-textarea{
-  width: 80%;
+  /* width: 80%; */
 }
 </style>

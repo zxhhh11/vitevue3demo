@@ -1,10 +1,19 @@
 <script setup lang="ts">
 import { getmark } from "@/utils/watermark";
-import {onMounted,onUnmounted} from 'vue'
+import {onMounted,onUnmounted,watch,ref, shallowRef} from 'vue'
+import type {Ref} from 'vue'
 import SideBar from '@/components/common/SideBar.vue'
 import Header from '@/components/common/Header.vue'
-import { useRouter } from "vue-router";
+import { useRouter,useRoute } from "vue-router";
+import branchTranFlow from '@/views/service/branchTranFlow.vue'
+import TagModule2 from '@/components/common/TagModule2.vue'
+import customerInfo from "./service/customerInfo.vue";
+import headOfficeSerHsy from "./service/headOfficeSerHsy.vue";
+import inquirTranFlow from "./service/inquirTranFlow.vue";
+import interCardTranFlow from "./service/interCardTranFlow.vue";
+import myService from "./service/myService.vue";
 const router = useRouter()
+const route = useRoute();
 const filterClick =()=>{
   router.push('/filter')
 }
@@ -59,6 +68,83 @@ const keyDown = () => {
   onUnmounted(() => {
   window.removeEventListener('keydown', handleKeyDown, true);
 });
+const editableTabsValue = ref('6');
+interface TabItemType {
+  title: string | unknown;
+  name: string;
+  content: HTMLElement;
+  closable: boolean;
+}
+const editableTabs: Ref<TabItemType[]> = ref([
+ 
+  {
+    title: '客户信息',
+    name: '0',
+    content: shallowRef(customerInfo),
+    closable: false
+  },
+  {
+    title: '分行端服务流水',
+    name: '1',
+    content: shallowRef(branchTranFlow),
+    closable: false
+  },
+  {
+    title: '总行端服务历史(400)',
+    name: '2',
+    content: shallowRef(headOfficeSerHsy),
+    closable: false
+  },
+  {
+    title: '国际卡上收前交易流水',
+    name: '3',
+    content: shallowRef(interCardTranFlow),
+    closable: false
+  },
+  {
+    title: '非柜员交易流水查询',
+    name: '4',
+    content: shallowRef(inquirTranFlow),
+    closable: false
+  },
+  {
+    title: '我的服务',
+    name: '5',
+    content: shallowRef(myService),
+    closable: false
+  },
+  {
+    title: route.meta.title, //这个是刷新时或页面首次加载时得默认值
+    name: '6',
+    content: shallowRef(TagModule2),
+    closable: false
+  }
+ 
+]);
+watch(
+  route, //这里必须传入要用watch 观察的参数
+  (to, from) => {
+    // 可以拿到被追踪参数变化前后的值 这一点 watchEffect 做不到
+    console.log(
+      to,
+      ' towatch effect state.num',
+      editableTabsValue,
+      'editableTabsValue',to.meta.title
+    );
+    if (typeof to.meta.title === 'string') {
+      editableTabs.value[6].title = to.meta.title;
+    }
+    let arr = ['客户信息','分行端服务流水','总行端服务历史(400)','国际卡上收前交易流水','非柜员交易流水查询','我的服务']
+    let title:any= to.meta.title;
+    if(!arr.includes(title)){
+      editableTabsValue.value = '6';
+     }
+    // if (editableTabsValue.value === '7' && to.fullPath !== '/login') {
+    //   console.log(editableTabsValue,'editableTabsValue')
+    //  
+    // }
+  }
+);
 </script>
 
 <template>
@@ -98,7 +184,28 @@ const keyDown = () => {
                 </el-descriptions-item>
               
               </el-descriptions>
-          <RouterView />
+              <el-tabs
+                v-model="editableTabsValue"
+                type="card"
+                class="demo-tabs right-tabs"
+              >
+                <el-tab-pane
+                  v-for="item in editableTabs"
+                  :key="item.name"
+                  :label="(item.title as string)"
+                  :name="item.name"
+                  :closable="item.closable"
+                >
+                  <!-- <router-view class="main_view" v-slot="{ Component }"> -->
+                  <!-- <transition name="fade-transform" mode="out-in"> -->
+                  <!-- <component :is="Component" /> -->
+
+                  <!-- </router-view> -->
+                  <component :is="item.content"></component>
+                  <!-- </transition> -->
+                </el-tab-pane>
+              </el-tabs>
+          <!-- <RouterView /> -->
           </div>
         </div>
        

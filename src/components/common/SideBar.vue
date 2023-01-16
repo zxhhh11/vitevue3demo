@@ -88,7 +88,7 @@ const loadAll = () => {
           { "value": "信用卡授权查询", "path": "/queryFun/creditCardAuth","address":"2-16","quickCheck":"XYKSQCX" },
           { "value": "交易短信通知触发金额", "path": "/OperatFun/tranSMSNotif","address":"3-0","quickCheck":"JYDXTZCFJE" },
           { "value": "分期交易提前结算并减免手续费", "path": "/OperatFun/installmentTradeAndReduce","address":"3-1","quickCheck":"FQJYTQJSBJMSXF" },
-          { "value": "客户、账户五级分类批量调整申请", "path": "/OperatFun/customerAndAccountFLAgjust","address":"3-2","quickCheck":"KHZHWJFLPLTZSQ" }  
+          { "value": "客户、账户五级分类批量调整申请", "path": "/OperatFun/customerAndAccountFLAgjust","address":"3-2","quickCheck":"KHZHWJFLPLTZSQ" }
         ];
 }
 const handleSelect = (item: LinkItem) => {

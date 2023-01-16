@@ -292,61 +292,70 @@ export const Router: Array<RouteRecordRaw> = [
 
 
 /**************  底部菜单路由  可独立拆分出去********************/
-{
-  path: '/service',
-  meta: {
-    title: '服务类功能'
-  },
-  redirect: '/service/customerInfo',
-  children: [
-    {
-      path: '/service/customerInfo',
+// {
+//   path: '/service',
+//   meta: {
+//     title: '服务类功能'
+//   },
+//   redirect: '/service/customerInfo',
+//   children: [
+//     {
+//       path: '/service/customerInfo',
     
-      meta: {
-        title: '客户信息',
-      },
-      name: 'customerInfo',
-      component: () =>
-      import(/* webpackChunkName: "customerInfo" */ '@/views/service/customerInfo.vue')
-    },
-    {
-      path: '/service/branchTranFlow',
-      meta: {
-        title: '分行端交易流水'
-      },
-      name: 'branchTranFlow',
-      component: () =>
-      import(/* webpackChunkName: "branchTranFlow" */ '@/views/service/branchTranFlow.vue')
-    },
-    {
-      path: '/service/headOfficeSerHsy',
-      meta: {
-        title: '总行端服务历史（400）'
-      },
-      name: 'headOfficeSerHsy',
-      component: () =>
-      import(/* webpackChunkName: "headOfficeSerHsy" */ '@/views/service/headOfficeSerHsy.vue')
-    },
-    {
-      path: '/service/interCardTranFlow',
-      meta: {
-        title: '国际卡上收前交易流水',
-      },
-      name: 'interCardTranFlow',
-      component: () =>
-      import(/* webpackChunkName: "interCardTranFlow" */ '@/views/service/interCardTranFlow.vue')
-    },
-    {
-      path: '/service/inquirTranFlow',
-      meta: {
-        title: '本柜员交易流水查询'
-      },
-      name: 'inquirTranFlow',
-      component: () =>
-      import(/* webpackChunkName: "inquirTranFlow" */ '@/views/service/inquirTranFlow.vue')
-    },
-  ]
-},
+//       meta: {
+//         title: '客户信息',
+//       },
+//       name: 'customerInfo',
+//       component: () =>
+//       import(/* webpackChunkName: "customerInfo" */ '@/views/service/customerInfo.vue')
+//     },
+//     {
+//       path: '/service/branchTranFlow',
+//       meta: {
+//         title: '分行端交易流水'
+//       },
+//       name: 'branchTranFlow',
+//       component: () =>
+//       import(/* webpackChunkName: "branchTranFlow" */ '@/views/service/branchTranFlow.vue')
+//     },
+//     {
+//       path: '/service/headOfficeSerHsy',
+//       meta: {
+//         title: '总行端服务历史（400）'
+//       },
+//       name: 'headOfficeSerHsy',
+//       component: () =>
+//       import(/* webpackChunkName: "headOfficeSerHsy" */ '@/views/service/headOfficeSerHsy.vue')
+//     },
+//     {
+//       path: '/service/interCardTranFlow',
+//       meta: {
+//         title: '国际卡上收前交易流水',
+//       },
+//       name: 'interCardTranFlow',
+//       component: () =>
+//       import(/* webpackChunkName: "interCardTranFlow" */ '@/views/service/interCardTranFlow.vue')
+//     },
+//     {
+//       path: '/service/inquirTranFlow',
+//       meta: {
+//         title: '本柜员交易流水查询'
+//       },
+//       name: 'inquirTranFlow',
+//       component: () =>
+//       import(/* webpackChunkName: "inquirTranFlow" */ '@/views/service/inquirTranFlow.vue')
+//     },
+//     {
+//       path: '/service/myService',
+//       meta: {
+//         title: '我的服务'
+//       },
+//       name: 'myService',
+//       component: () =>
+//       import(/* webpackChunkName: "myService" */ '@/views/service/myService.vue')
+//     },
+//   ]
+// },
 {
   path: '/filter',
   meta: {
