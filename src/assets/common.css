@@ -163,6 +163,28 @@ box-sizing: border-box;
     background-color: #d2f4f9;
   } */
   .el-table th.el-table__cell{
-    background-color: #d2f4f9;
-    color: blue;
+    background-color: #f7f9fd;
+    /* color:#1677ff; */
   }
+ .custom-form .el-descriptions__content.el-descriptions__cell.is-bordered-content{
+    width:300px
+  }
+  .el-descriptions__label .specail-label{
+    color: #ff0000;
+    font-weight: 600;
+  }
+  b.custom-link{
+    color: #626aef;
+    font-size: 14px;
+    text-decoration: underline;
+    font-weight: 500;
+    cursor: pointer;
+   
+  }
+  b.custom-link:hover {
+    color: rgb(145, 151, 244);
+  }
+  .el-dialog__header{
+    border-bottom: 1px solid #eee;
+  }
+ 

@@ -1,5 +1,5 @@
 <template>
-  <div>personCardBill</div>
+  <div>personCardBill v gergre for test build</div>
 </template>
 
 <script setup lang="ts">

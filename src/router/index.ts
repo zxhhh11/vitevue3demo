@@ -5,7 +5,7 @@ import type { RouteRecordRaw } from 'vue-router';
 
 import ErrorConfig from './error';
 // import type { FunctionalComponent } from 'vue';
-import Home from '@/views/Home.vue';
+// import Home from '@/views/Home.vue';
 import NProgress from '@/utils/progress';
 import RoutesMapConfig from './routes';
 
@@ -30,7 +30,7 @@ export const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'Home',
-    component: Home,
+    component:() => import(/* webpackChunkName: "login" */ '@/views/Home.vue'),
     meta: {
       title: '系统首页'
     },

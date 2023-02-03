@@ -15,7 +15,11 @@ import myService from "./service/myService.vue";
 const router = useRouter()
 const route = useRoute();
 const filterClick =()=>{
+  if(editableTabsValue.value!=='6'){
+    editableTabsValue.value = '6'
+  }
   router.push('/filter')
+ 
 }
 const { watermark } = getmark();
     // onMounted(() => {
@@ -63,9 +67,10 @@ const keyDown = () => {
   }
   onMounted(() => {
   keyDown(); // 监听键盘
- // watermark('李某某 2023-01-03',400,300);//水印名  后面两个参数用来控制水印密度
+  watermark('李某某 2023-01-03',400,300);//水印名  后面两个参数用来控制水印密度
 });
   onUnmounted(() => {
+    watermark('',400,300);
   window.removeEventListener('keydown', handleKeyDown, true);
 });
 const editableTabsValue = ref('6');
@@ -75,7 +80,8 @@ interface TabItemType {
   content: HTMLElement;
   closable: boolean;
 }
-const editableTabs: Ref<TabItemType[]> = ref([
+// Ref<TabItemType[]>
+const editableTabs:any = ref([
  
   {
     title: '客户信息',
@@ -102,7 +108,7 @@ const editableTabs: Ref<TabItemType[]> = ref([
     closable: false
   },
   {
-    title: '非柜员交易流水查询',
+    title: '本柜员交易流水查询',
     name: '4',
     content: shallowRef(inquirTranFlow),
     closable: false

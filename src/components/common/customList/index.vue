@@ -21,7 +21,7 @@
             :label-class-name="labelClassName"
           >
             <template #label>
-              {{ item.label }}
+            <div :class="item.labelClass">  {{ item.label }}</div>
             </template>
             <template v-if="item.isTag">
               <el-tag
@@ -62,6 +62,7 @@ export interface ListType {
   type?: string;
   span?: number;
   isLink?: boolean;
+  labelClass?:string;
 }
 export interface DataType {
   [key: string]: any;

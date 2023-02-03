@@ -4,15 +4,15 @@
 const users = [
   {
     id: 1,
-    username: 'admin',
-    pwd: 'admin',
+    USERNO: 'admin',
+    PWD: 'admin',
     name: 'Vue Master',
     role: 'admin'
   },
   {
     id: 2,
-    username: 'user1',
-    pwd: 'password',
+    USERNO: 'user1',
+    PWD: 'password',
     name: 'User One',
     role: 'common'
   }
@@ -28,8 +28,8 @@ export default {
   //   const user = JSON.parse(options.body);
   //   for (let i = 0; i < users.length; i++) {
   //     if (
-  //       users[i]['username'] === user['username'] &&
-  //       users[i]['pwd'] === user['pwd']
+  //       users[i]['USERNO'] === user['USERNO'] &&
+  //       users[i]['PWD'] === user['PWD']
   //     ) {
   //       accessToken = 'longtimenoseeIamdyingtoseeyou';
   //       status = 200;
@@ -60,7 +60,7 @@ export default {
     const userId = parseInt(params.split('-')[1]);
     // const user = arrayFind(users, 'id', userId)
     const user = JSON.parse(options.body);
-    user.name = user.username;
+    user.name = user.USERNO;
     return {
       status: user ? 200 : 404,
       message: 'success',

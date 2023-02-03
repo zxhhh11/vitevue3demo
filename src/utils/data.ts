@@ -122,6 +122,202 @@ export const customerInfoData = [
     type: ''
   }
 ];
+export const customerInfo = [
+  {
+    CIFCMNO: '582995',
+    CUSTOMERNAME: '582995',
+    CUSTOMERNO: '86188216708',
+    CMNOTYPE: '客户号类型',
+    CMTYPE: '个人',
+    GENDER:'男',
+    BIRTHDAY:'2000-01-01',
+    LANGUAGE: 'SIMPLIFIED CHINESE 简体中文',
+    IDTYLE:'身份证',
+    IDNO:'**********01017272',
+    CORPORATION: '个人',
+    MARITALSTATUS: '已婚',
+    WORKFAXNO: '工作传真号码',
+    EDUCATION: '本科',
+    OCCUPATION:'',
+    NATIONALITY: '中国',
+    FAMILYNO: '3',
+    VIPIDENTIFY: '财富管理',
+    VIPVALIDITYSTARTTIME: '2021-03-14',
+    VIPVALIDITYENDTIME: '2050-12-31',
+    // IDENTIFY: '一级敏感要客（A）',
+    DUTY: '其它',
+   PHONENO:'',
+    EMAIL: '***********@166.com',
+    CUSTOMERLEVEL: 'MMME',
+    CIRCLECONSUMELABEL: 'MMME',
+    IDENTIFY: '0',
+  }
+];
+export const customerDetailInfo = [
+  {
+    label: 'CIF客户号',
+    value: 'CIFCMNO',
+    isTag: false,
+    type: ''
+  },
+  {
+    label: '客户姓名',
+    value: 'CUSTOMERNAME',
+    isTag: false,
+    type: ''
+  },
+
+  {
+    label: '客户号码',
+    value: 'CUSTOMERNO',
+    isTag: false,
+    type: ''
+  },
+  {
+    label: '客户号类型',
+    value: 'CMNOTYPE',
+    isTag: false,
+    type: ''
+  },
+  {
+    label: '客户类型',
+    value: 'CMTYPE',
+    isTag: false,
+    type: ''
+  },
+ 
+  {
+    label: '性别',
+    value: 'GENDER',
+    isTag: false,
+    type: ''
+  },
+  {
+    label: '生日',
+    value: 'BIRTHDAY',
+    isTag: false,
+    type: ''
+  },
+  {
+    label: '语言',
+    value: 'LANGUAGE',
+    isTag: false,
+    type: '',
+    span:2
+  },
+ 
+  {
+    label: '证件类型',
+    value: 'IDTYLE',
+    isTag: false,
+    type: '',
+  },
+  {
+    label: '证件号码',
+    value: 'IDNO',
+    isTag: false,
+    type: '',
+  },
+  {
+    label: '法人团体',
+    value: 'CORPORATION',
+    isTag: false,
+    type: ''
+  },
+  {
+    label: '婚姻状况',
+    value: 'MARITALSTATUS',
+    isTag: false,
+    type: ''
+  },
+  {
+    label: '学历',
+    value: 'EDUCATION',
+    isTag: false,
+    type: ''
+  },
+  {
+    label: '职业',
+    value: 'OCCUPATION',
+    isTag: false,
+    type: ''
+  },
+  {
+    label: '国籍',
+    value: 'NATIONALITY',
+    isTag: false,
+    type: ''
+  },
+  {
+    label: '家庭成员数量',
+    value: 'FAMILYNO',
+    isTag: false,
+    type: ''
+  },
+  // {
+  //   label: '要客标识',
+  //   value: 'IDENTIFY',
+  //   isTag: true,
+  //   type: 'red'
+  // },
+  {
+    label: 'VIP标识',
+    value: 'VIPIDENTIFY',
+    isTag: true,
+    type: 'lightpink'
+  },
+  {
+    label: 'VIP效期开始时间',
+    value: 'VIPVALIDITYSTARTTIME',
+    isTag: true,
+    type: 'blue'
+  },
+  {
+    label: 'VIP效期结束时间',
+    value: 'VIPVALIDITYENDTIME',
+    isTag: true,
+    type: 'blue'
+  },
+  {
+    label: '职务',
+    value: 'DUTY',
+    isTag: false,
+    type: ''
+  },
+  {
+    label: '手机号码',
+    value: 'PHONENO',
+    isTag: false,
+    type: ''
+  },
+ 
+  {
+    label: '电子邮件地址',
+    value: 'EMAIL',
+    isTag: false,
+    type: '',
+    span:2
+  },
+  {
+    label: '客户级别',
+    value: 'CUSTOMERLEVEL',
+    isTag: false,
+    type: ''
+  },
+  {
+    label: '循环及消费标签',
+    value: 'CIRCLECONSUMELABEL',
+    isTag: false,
+    type: ''
+  },
+  {
+    label: '要客标识',
+    value: 'IDENTIFY',
+    isTag: false,
+    type: '',
+    labelClass:'specail-label'
+  }
+];
 export const creditCardList = [
   {
     label: '申请ID',
@@ -333,6 +529,69 @@ export const creditCardDatas = [
     // ApplicantRemarks:'27'
   }];
   
+export const  customerInfoList = [{
+    label: '客户姓名',
+    value: 'CUSTOMERNAME',
+    isTag: false,
+    type: ''
+  },
+  {
+    label: '客户性别',
+    value: 'CUSTOMERGENDER',
+    isTag: false,
+    type: ''
+  },
+  {
+    label: '证件类型',
+    value: 'IDTYPE',
+    isTag: false,
+    type: ''
+  },
+  {
+    label: 'VIP标识',
+    value: 'VIPIDENTIFY',
+    isTag: false,
+    type: '',
+    labelClass:'specail-label'
+  },
+  {
+    label: '证件号',
+    value: 'IDNO',
+    isTag: false,
+    type: ''
+  },
+  {
+    label: '手机号',
+    value: 'PHONENO',
+    isTag: false,
+    type: ''
+  },
+  {
+    label: '婚姻状况',
+    value: 'MARITALSTATUS',
+    isTag: false,
+    type: ''
+  },
+  {
+    label: '要客标识',
+    value: 'IDENTIFY',
+    isTag: false,
+    type: '',
+    labelClass:'specail-label'
+  }
+]
+export const customerInfoDatas =[
+  {
+    CUSTOMERNAME:'一二三',
+    CUSTOMERGENDER:'男',
+    IDTYPE:'身份证',
+    VIPIDENTIFY:'一般客户',
+    IDNO:'11154874888888',
+    PHONENO:'12345678925',
+    MARITALSTATUS:'已婚',
+    IDENTIFY:'0',
+  }
+]
 export const ManagerList = [
   {
     label: '客户经理姓名',
@@ -1098,94 +1357,361 @@ export const accountDetail = [
     span: 2
   }
 ];
-
-export const cardDetail = [
+export const accountDetail2 = [
   {
-    label: '卡号',
-    value: '6259****80143675',
+    label: '帐号',
+    value: '2885754268097571',
     isTag: false,
-    type: '',
-    span: 1
-  },
-  {
-    label: '制卡状态',
-    value: '新卡申请',
-    isTag: false,
-    type: '',
-    span: 1
+    type: ''
   },
   {
     label: '发卡机构',
     value: '中国银行银行卡中心',
     isTag: false,
+    type: ''
+  },
+  {
+    label: '币别',
+    value: 'RMB',
+    isTag: false,
+    type: ''
+  },
+  {
+    label: '帐户状态(手动)',
+    value: '',
+    isTag: false,
+    type: ''
+  },
+  {
+    label: '帐户设置时间（手动）',
+    value: '2046-09-12',
+    isTag: false,
+    type: ''
+  },
+  {
+    label: '协议参考号ID',
+    value: '71616694783',
+    isTag: false,
+    type: ''
+  },
+  {
+    label: '帐户状态(自动)',
+    value: '',
+    isTag: false,
+    type: ''
+  },
+  {
+    label: '帐户设置时间（自动）',
+    value: '',
+    isTag: false,
+    type: ''
+  },
+  {
+    label: '帐户是否在结构中',
+    value: '否',
+    isTag: false,
+    type: ''
+  },
+  
+ 
+ 
+  {
+    label: '免息天数或宽限天数',
+    value: '1000天',
+    isTag: false,
+    type: ''
+  },
+  {
+    label: '产品类型',
+    value: '海航银联白金卡',
+    isTag: false,
+    type: ''
+  },
+  {
+    label: '公司标识',
+    value: '准贷记卡',
+    isTag: false,
+    type: ''
+  },
+  {
+    label: '还款方式',
+    value: '否',
+    isTag: false,
+    type: ''
+  },
+  {
+    label: '还款帐号',
+    value: '',
+    isTag: false,
+    type: ''
+  },
+  {
+    label: '下次年费日期',
+    value: '',
+    isTag: false,
+    type: ''
+  },
+  // {
+  //   label: '对帐单地址',
+  //   value: '北京市海淀区上地科技大厦',
+  //   isTag: false,
+  //   type: '',
+  //   span: 3
+  // },
+  // {
+  //   label: '对帐单地址',
+  //   value: '北京市海淀区上地科技大厦',
+  //   isTag: false,
+  //   type: '',
+  //   span: 3
+  // },
+  // {
+  //   label: '对帐单邮政编码',
+  //   value: '100000',
+  //   isTag: false,
+  //   type: '',
+  //   span: 3
+  // },
+  {
+    label: '帐单日长度单位(手动)',
+    value: 'MNTH',
+    isTag: false,
     type: '',
     span: 1
+  },
+  {
+    label: '每月帐单日(关帐日)',
+    value: '10',
+    isTag: false,
+    type: '',
+    span: 2
+  },
+  {
+    label: '信用额度',
+    value: '1000.00',
+    isTag: false,
+    type: '',
+    span: 1
+  },
+  {
+    label: '预借现金额度',
+    value: '100.00',
+    isTag: false,
+    type: '',
+    span: 2
+  }
+];
+
+export const cardDetail = [
+  {
+    label: '卡号',
+    value: 'CARDNO',
+    isTag: false,
+    type: '',
+    span: 1,
+    key:'6259****80143675'
+  },
+  {
+    label: '制卡状态',
+    value: 'CARDPRINTSTATUS',
+    isTag: false,
+    type: '',
+    span: 1,
+    key:'新卡申请'
+  },
+  {
+    label: '发卡机构',
+    value: 'CARDISSUER',
+    isTag: false,
+    type: '',
+    span: 1,
+    key:'中国银行银行卡中心'
   },
   {
     label: '激活方式',
-    value: '持卡人手动激活',
+    value: 'ACTIVATIONMETHOD',
     isTag: false,
     type: '',
-    span: 1
+    span: 1,
+    key:'持卡人手动激活'
   },
   {
     label: '激活日期',
-    value: '2020-01-01',
+    value: 'ACTIVATIONDATE',
     isTag: false,
     type: '',
-    span: 1
+    span: 1,
+    key:'2020-01-01'
   },
   {
     label: '卡状态',
-    value: 'ACTIVATION PENDING',
+    value: 'CARDSTATUS',
     isTag: false,
     type: '',
-    span: 1
+    span: 1,
+    key:'ACTIVATION PENDING'
   },
   {
     label: '卡类型',
-    value: '海航银联白金卡',
+    value: 'CARDTYPE',
     isTag: false,
     type: '',
-    span: 1
+    span: 1,
+    key:'海航银联白金卡'
   },
   {
     label: '开始日期',
-    value: '2020-02-01',
+    value: 'STARTDATE',
     isTag: false,
     type: '',
-    span: 1
+    span: 1,
+    key:'2020-02-01'
   },
   {
     label: '截至日期',
-    value: '2030-02-01',
+    value: 'DUEDATE',
     isTag: false,
     type: '',
-    span: 1
+    span: 1,
+    key:'2030-02-01'
   },
   {
     label: '发卡原因',
-    value: '新发卡',
+    value: 'CARDISSUEREASON',
     isTag: false,
     type: '',
-    span: 1
+    span: 1,
+    key:'新发卡'
   },
   {
     label: '主附卡',
     value: 'MAIN',
     isTag: false,
     type: '',
-    span: 1
+    span: 1,
+    key:'MAIN'
+  },
+  {
+    label: '压花名称',
+    value: 'EMBOSSEDNAME',
+    isTag: false,
+    type: '',
+    span: 1,
+    key:'YE YI/ '
+  }
+];
+export const cardDetail2 = [
+  {
+    label: '卡号',
+    value: '6259****80143675',
+    isTag: false,
+    type: '',
+    span: 1,
+    key:'CARDNO'
+  },
+  {
+    label: '制卡状态',
+    value: '新卡申请',
+    isTag: false,
+    type: '',
+    span: 1,
+    key:'CARDPRINTSTATUS'
+  },
+  {
+    label: '发卡机构',
+    value: '中国银行银行卡中心',
+    isTag: false,
+    type: '',
+    span: 1,
+    key:'CARDISSUER'
+  },
+  {
+    label: '激活方式',
+    value: '持卡人手动激活',
+    isTag: false,
+    type: '',
+    span: 1,
+    key:'ACTIVATIONMETHOD'
+  },
+  {
+    label: '激活日期',
+    value: '2020-01-01',
+    isTag: false,
+    type: '',
+    span: 1,
+    key:'ACTIVATIONDATE'
+  },
+  {
+    label: '卡状态',
+    value: 'ACTIVATION PENDING',
+    isTag: false,
+    type: '',
+    span: 1,
+    key:'CARDSTATUS'
+  },
+  {
+    label: '卡类型',
+    value: '海航银联白金卡',
+    isTag: false,
+    type: '',
+    span: 1,
+    key:'CARDTYPE'
+  },
+  {
+    label: '开始日期',
+    value: '2020-02-01',
+    isTag: false,
+    type: '',
+    span: 1,
+    key:'STARTDATE'
+  },
+  {
+    label: '截至日期',
+    value: '2030-02-01',
+    isTag: false,
+    type: '',
+    span: 1,
+    key:'DUEDATE'
+  },
+  {
+    label: '发卡原因',
+    value: '新发卡',
+    isTag: false,
+    type: '',
+    span: 1,
+    key:'CARDISSUEREASON'
+  },
+  {
+    label: '主附卡',
+    value: 'MAIN',
+    isTag: false,
+    type: '',
+    span: 1,
+    key:'MAIN'
   },
   {
     label: '压花名称',
     value: 'YE YI/ ',
     isTag: false,
     type: '',
-    span: 1
+    span: 1,
+    key:'EMBOSSEDNAME'
   }
 ];
-
+export const  cardDetailInfo = [{
+  CARDNO:'12',
+  CARDPRINTSTATUS:'34',
+  CARDISSUER:'43',
+  ACTIVATIONMETHOD:'y54',
+  ACTIVATIONDATE:'y45',
+  CARDSTATUS:'y5',
+  CARDTYPE:'y5y',
+  STARTDATE:'hr',
+  DUEDATE:'hju',
+  CARDISSUEREASON:'ju6',
+  MAIN:'j67',
+  EMBOSSEDNAME:'j'
+}]
 export const timelineData = [
   {
     callNumber: 'CSR21101100000001',
@@ -1409,6 +1935,39 @@ export const drawerData = [
     cardNo: '6259****80143675',
     phoneNo: '166***02908',
     ID: '**********01017272'
+  }
+];
+export const cardList = [
+  {
+    CARDNO: '6259****80143675',
+    CARDEFFECDATE: '2023-01-01',
+    CARDEXPIRADATE: '2033-12-30',
+    CARDTYPE: '中银数字ETC卡',
+    CARDSTATUS: 'ACTIVATION PENDING',
+    MAIN: 'MAIN',
+    MIGRACARD: '否'
+  },
+  {
+    CARDNO: '6259****80143675',
+    CARDEFFECDATE: '2023-01-01',
+    CARDEXPIRADATE: '2033-12-30',
+    CARDTYPE: '中银数字ETC卡',
+    CARDSTATUS: 'ACTIVATION PENDING',
+    MAIN: 'MAIN',
+    MIGRACARD: '否'
+  }
+];
+export const accountList = [
+  {
+    ACCOUNTNO: 'dvsvsdv',
+    CURRENCY: 'vv',
+    ACCOUNTTYPE: 'd',
+    CREDITLINE: 'eg34',
+    ADVANCECASHLINE: 't65',
+    BILLDATE: 'y6',
+    ISSUINGBANK: 'hy',
+    CARDISSUERBH: 'jjj',
+    MASTERLANDBH: 'a'
   }
 ];
 export const billList = [
@@ -1857,3 +2416,30 @@ export const AccountQueryStatus = [
     type: ''
   }
 ];
+
+
+export const tranList = [
+  {TRADFLOW:'20230112080548138497',CUSTOMERNAME:'12',TRADCARDNO:'6259061121339698',TRADNAME:'信用卡历史账期列表查询',TRADSTARTTIME:'2023-01-12 08:05:26',TRADENDTIME:'2023-01-12 08:06:56',OPERATOR:'三级复核用户',RECHECKER:'三级复核用户',TRADRESULT:'交易成功'},
+  {TRADFLOW:'20230112080548138497',CUSTOMERNAME:'34',TRADCARDNO:'6259061121339698',TRADNAME:'查询历史还款记录',TRADSTARTTIME:'2023-01-12 08:05:26',TRADENDTIME:'2023-01-12 08:06:56',OPERATOR:'三级复核用户',RECHECKER:'三级复核用户',TRADRESULT:'未获得结果'},
+  {TRADFLOW:'TRADFLOW',CUSTOMERNAME:'56',TRADCARDNO:'TRADCARDNO',TRADNAME:'TRADNAME',TRADSTARTTIME:'TRADSTARTTIME',TRADENDTIME:'TRADENDTIME',OPERATOR:'OPERATOR',RECHECKER:'RECHECKER',TRADRESULT:'TRADRESULT'},
+  {TRADFLOW:'TRADFLOW',CUSTOMERNAME:'78',TRADCARDNO:'TRADCARDNO',TRADNAME:'TRADNAME',TRADSTARTTIME:'TRADSTARTTIME',TRADENDTIME:'TRADENDTIME',OPERATOR:'OPERATOR',RECHECKER:'RECHECKER',TRADRESULT:'TRADRESULT'},
+  {TRADFLOW:'20230112080548138497',CUSTOMERNAME:'12',TRADCARDNO:'6259061121339698',TRADNAME:'信用卡历史账期列表查询',TRADSTARTTIME:'2023-01-12 08:05:26',TRADENDTIME:'2023-01-12 08:06:56',OPERATOR:'三级复核用户',RECHECKER:'三级复核用户',TRADRESULT:'交易成功'},
+  {TRADFLOW:'20230112080548138497',CUSTOMERNAME:'34',TRADCARDNO:'6259061121339698',TRADNAME:'查询历史还款记录',TRADSTARTTIME:'2023-01-12 08:05:26',TRADENDTIME:'2023-01-12 08:06:56',OPERATOR:'三级复核用户',RECHECKER:'三级复核用户',TRADRESULT:'未获得结果'},
+  {TRADFLOW:'TRADFLOW',CUSTOMERNAME:'56',TRADCARDNO:'TRADCARDNO',TRADNAME:'TRADNAME',TRADSTARTTIME:'TRADSTARTTIME',TRADENDTIME:'TRADENDTIME',OPERATOR:'OPERATOR',RECHECKER:'RECHECKER',TRADRESULT:'TRADRESULT'},
+  {TRADFLOW:'TRADFLOW',CUSTOMERNAME:'78',TRADCARDNO:'TRADCARDNO',TRADNAME:'TRADNAME',TRADSTARTTIME:'TRADSTARTTIME',TRADENDTIME:'TRADENDTIME',OPERATOR:'OPERATOR',RECHECKER:'RECHECKER',TRADRESULT:'TRADRESULT'},
+  {TRADFLOW:'20230112080548138497',CUSTOMERNAME:'12',TRADCARDNO:'6259061121339698',TRADNAME:'信用卡历史账期列表查询',TRADSTARTTIME:'2023-01-12 08:05:26',TRADENDTIME:'2023-01-12 08:06:56',OPERATOR:'三级复核用户',RECHECKER:'三级复核用户',TRADRESULT:'交易成功'},
+  {TRADFLOW:'20230112080548138497',CUSTOMERNAME:'34',TRADCARDNO:'6259061121339698',TRADNAME:'查询历史还款记录',TRADSTARTTIME:'2023-01-12 08:05:26',TRADENDTIME:'2023-01-12 08:06:56',OPERATOR:'三级复核用户',RECHECKER:'三级复核用户',TRADRESULT:'未获得结果'},
+  {TRADFLOW:'TRADFLOW',CUSTOMERNAME:'56',TRADCARDNO:'TRADCARDNO',TRADNAME:'TRADNAME',TRADSTARTTIME:'TRADSTARTTIME',TRADENDTIME:'TRADENDTIME',OPERATOR:'OPERATOR',RECHECKER:'RECHECKER',TRADRESULT:'TRADRESULT'},
+  {TRADFLOW:'TRADFLOW',CUSTOMERNAME:'78',TRADCARDNO:'TRADCARDNO',TRADNAME:'TRADNAME',TRADSTARTTIME:'TRADSTARTTIME',TRADENDTIME:'TRADENDTIME',OPERATOR:'OPERATOR',RECHECKER:'RECHECKER',TRADRESULT:'TRADRESULT'}
+]
+
+export const sessionList =[
+  {CALLOUTNO:'CSR23010601317314',ATTENDANT:'admin',CALLTIME:'2023-01-06 13:25:36',CALLNO:'',PROBLEMDESC:''}
+]
+export const tradList =[
+  {TRADCARDNO:'CSR23010601317314',FUNCTION:'admin',TRADSTARTTIME:'2023-01-06 13:25:36',TRADRETURNRESULT:''}
+]
+export const interCardList = [
+  {TRADFLOW:'20230112080548138497',TRADCARDNO:'6259061121339698',TRADNAME:'信用卡历史账期列表查询',TRADSTARTTIME:'2023-01-12 08:05:26',TRADENDTIME:'2023-01-12 08:06:56',TRADRESULT:'交易成功'},
+  {TRADFLOW:'20230112080548138497',TRADCARDNO:'6259061121339698',TRADNAME:'查询历史还款记录',TRADSTARTTIME:'2023-01-12 08:05:26',TRADENDTIME:'2023-01-12 08:06:56',TRADRESULT:'未获得结果'},
+]
