@@ -4,6 +4,15 @@
 import type { RouteRecordRaw } from 'vue-router';
 export const Router: Array<RouteRecordRaw> = [
   {
+    path: '/index',
+   
+    name: 'index',
+    meta: {
+      title: '首页',
+    },
+    component: () =>import(/* webpackChunkName: "index" */ '@/views/index.vue')
+  },
+  {
     path: '/guestManagerMod',
     meta: {
       title: '要客客户经理使用模块',
@@ -241,16 +250,6 @@ export const Router: Array<RouteRecordRaw> = [
       },
     ]
   },
-  {
-  path: '/charts',
-  name: 'charts',
-  meta: {
-    title: '图表统计'
-  },
-  // icon: 'analysis',
-  component: () =>
-    import(/* webpackChunkName: "charts" */ '@/views/charts/index.vue')
-},
 {
   path: '/OperatFun',
   meta: {
@@ -289,8 +288,6 @@ export const Router: Array<RouteRecordRaw> = [
     }
   ]
 },
-
-
 /**************  底部菜单路由  可独立拆分出去********************/
 // {
 //   path: '/service',

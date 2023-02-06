@@ -68,10 +68,7 @@ const route = useRoute();
 */
 const router = useRouter();
 //console.log('1-开始创建组件-setup')
-/**
-* 数据部分
-*/
-const data = reactive({})
+
 onBeforeMount(() => {
   //console.log('2.组件挂载页面之前执行----onBeforeMount')
 })
@@ -80,11 +77,7 @@ onMounted(() => {
 })
 watchEffect(()=>{
 })
-// 使用toRefs解构
-// let { } = { ...toRefs(data) } 
-defineExpose({
-  ...toRefs(data)
-})
+
 const handleClick = () => {},
   handleCurrent = (val: any) => {
     //这里没有用Mock

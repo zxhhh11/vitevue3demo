@@ -22,15 +22,15 @@ import RoutesMapConfig from './routes';
 export const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/guestManagerMod',
+    redirect: '/index',
     meta: {
-      title: '登录XX系统'
+      title: '首页'
     }
   },
   {
     path: '/',
     name: 'Home',
-    component:() => import(/* webpackChunkName: "login" */ '@/views/Home.vue'),
+    component:() => import(/* webpackChunkName: "login" */ '@/layout/index.vue'),
     meta: {
       title: '系统首页'
     },
@@ -49,7 +49,14 @@ routes[1].children = RoutesMapConfig.concat(ErrorConfig);
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { top: 0 }
+    }
+  }
 });
 /**********注意： 如果需要添加新的路由页，
  * 不要改动这里代码 只需要在同级的routes 文件夹操作就可以

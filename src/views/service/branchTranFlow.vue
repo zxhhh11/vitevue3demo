@@ -28,7 +28,7 @@
       <BaseTable
             :tableData="tranLists"
             :total="tranLists.length"
-            :currentPage="CurrentPage"
+            :currentPage="currentPage"
             :hasPagination="true"
             :handleClick="handleClick"
             :isMutiSelect="false"
@@ -59,8 +59,9 @@ import { ref, reactive, toRefs, onBeforeMount, onMounted, watchEffect, computed 
 import { useRoute, useRouter } from 'vue-router';
 import {tranList} from '@/utils/data'
 import BaseTable from '@/components/common/baseTable/index.vue'
-let cardList = ref('')
-let CurrentPage = ref(1)
+
+
+let currentPage = ref(1)
 const value = ref('')
 let tranLists = ref(tranList)
 const options = [
@@ -94,23 +95,7 @@ const route = useRoute();
 */
 const router = useRouter();
 //console.log('1-开始创建组件-setup')
-/**
-* 数据部分
-*/
-const data = reactive({})
-onBeforeMount(() => {
-  //console.log('2.组件挂载页面之前执行----onBeforeMount')
-})
-onMounted(() => {
-  //console.log('3.-组件挂载到页面之后执行-------onMounted')
-})
-watchEffect(()=>{
-})
-// 使用toRefs解构
-// let { } = { ...toRefs(data) } 
-defineExpose({
-  ...toRefs(data)
-})
+
 const handleClick = () => {},
   handleCurrent = (val: any) => {
     //这里没有用Mock
@@ -140,6 +125,14 @@ const handleClick = () => {},
   tranResultClick=()=>{
 
   }
+  onBeforeMount(() => {
+    //console.log('2.组件挂载页面之前执行----onBeforeMount')
+  })
+  onMounted(() => {
+    //console.log('3.-组件挂载到页面之后执行-------onMounted')
+  })
+  watchEffect(()=>{
+  })
 </script>
 <style scoped>
 </style>

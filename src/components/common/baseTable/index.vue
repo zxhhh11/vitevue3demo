@@ -106,9 +106,7 @@ export default {
 
 <script lang="ts" setup>
 import {
-  // defineProps,
   onMounted,
-  // defineEmits,
   reactive,
   ref,
   computed,

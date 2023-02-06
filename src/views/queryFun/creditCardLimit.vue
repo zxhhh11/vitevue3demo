@@ -68,9 +68,7 @@ watchEffect(()=>{
 })
 // 使用toRefs解构
 // let { } = { ...toRefs(data) } 
-defineExpose({
-  ...toRefs(data)
-})
+
 
 </script>
 <style scoped>

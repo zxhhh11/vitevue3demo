@@ -48,10 +48,12 @@ import { ref, reactive, toRefs, onBeforeMount, onMounted, watchEffect, computed 
 import { useRoute, useRouter } from 'vue-router';
 import {interCardList,tradList} from '@/utils/data'
 import BaseTable from '@/components/common/baseTable/index.vue'
-import BaseModal from '@/components/common/modal/index.vue'
+
 let interCardLists = ref(interCardList)
 let currentPage = ref(1)
 const value = ref('')
+
+
 const options = [
   {
     value: '',
@@ -86,7 +88,7 @@ const router = useRouter();
 /**
 * 数据部分
 */
-const data = reactive({})
+
 onBeforeMount(() => {
   //console.log('2.组件挂载页面之前执行----onBeforeMount')
 })
@@ -95,11 +97,7 @@ onMounted(() => {
 })
 watchEffect(()=>{
 })
-// 使用toRefs解构
-// let { } = { ...toRefs(data) } 
-defineExpose({
-  ...toRefs(data)
-})
+
 const handleClick = () => {},
   handleCurrent = (val: any) => {
     //这里没有用Mock

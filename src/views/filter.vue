@@ -47,13 +47,7 @@
 <script setup lang="ts">
 import { ref, reactive, toRefs, onBeforeMount, onMounted, watchEffect, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-let data = reactive({
-  name: '',
-  creditCardNo: '',
-  phoneNo: '',
-  idNo: '',
-  currentPage: 1
-});
+
 const radio3 = ref("1")
 const cardNo = ref('')
 const idNo = ref('')
@@ -62,8 +56,7 @@ const iptFocus=(id:string)=>{
     console.log(223,id)
     radio3.value = id
 }
-let { name, creditCardNo,  currentPage} =
-  toRefs(data);
+
 /**
 * 路由对象
 */
@@ -72,10 +65,7 @@ const route = useRoute();
 * 路由实例
 */
 const router = useRouter();
-//console.log('1-开始创建组件-setup')
-/**
-* 数据部分
-*/
+
 
 onBeforeMount(() => {
   //console.log('2.组件挂载页面之前执行----onBeforeMount')
@@ -84,11 +74,6 @@ onMounted(() => {
   //console.log('3.-组件挂载到页面之后执行-------onMounted')
 })
 watchEffect(()=>{
-})
-// 使用toRefs解构
-// let { } = { ...toRefs(data) } 
-defineExpose({
-  ...toRefs(data)
 })
 
 </script>

@@ -1,31 +1,5 @@
 <template>
   <div >
-    <!-- <el-descriptions :column="3" border>
-    <el-descriptions-item
-      label="客户姓名:"
-      label-align="right"
-      align="center"
-      label-class-name="my-label"
-      class-name="my-content"
-      width="150px"
-      >{{ customer.customerName }}</el-descriptions-item
-    >
-    <el-descriptions-item label="证件类型:" label-align="right" align="center"
-      >{{ customer.IDtype }}</el-descriptions-item
-    >
-    <el-descriptions-item label="证件号码:" label-align="right" align="center"
-      >{{ customer.IDNo }}</el-descriptions-item
-    >
-    <el-descriptions-item label="卡号:" label-align="right" align="center">
-      <el-tag size="small">{{ customer.cardNo }}</el-tag>
-    </el-descriptions-item>
-    <el-descriptions-item label="客户号:" label-align="right" align="center">
-      <el-tag size="small">{{ customer.customerNo }}</el-tag>
-    </el-descriptions-item>
-    <el-descriptions-item label="客户类型:" label-align="right" align="center">
-      <el-tag size="small">{{ customer.customerType }}</el-tag>
-    </el-descriptions-item>
-  </el-descriptions> -->
   inquireCustomerInfo
 <div>  登录验证--{{ loginStatus }}</div>
 <div> token验证---{{ tokenTest }}</div>
@@ -52,7 +26,7 @@
               <el-input
                 placeholder="请在此处输入用户姓名"
                 size="small"
-                v-model="name"
+                v-model="state.name"
                 clearable
               >
               </el-input>
@@ -61,7 +35,7 @@
               <el-input
                 placeholder="请在此处输入信用卡号"
                 size="small"
-                v-model="creditCardNo"
+                v-model="state.creditCardNo"
                 clearable
               >
               </el-input>
@@ -70,7 +44,7 @@
               <el-input
                 placeholder="请在此处输入手机号"
                 size="small"
-                v-model="phoneNo"
+                v-model="state.phoneNo"
                 clearable
               >
               </el-input>
@@ -79,7 +53,7 @@
               <el-input
                 placeholder="请在此处输入证件号"
                 size="small"
-                v-model="idNo"
+                v-model="state.idNo"
                 clearable
               >
               </el-input>
@@ -104,15 +78,13 @@ import useStore  from '@/stores/index'
 import { storeToRefs } from 'pinia';
 import { customerInfoData } from '@/utils/data';
 import CustomList from '@/components/common/customList/index.vue';
-let data = reactive({
+let state = ref({
   name: '',
   creditCardNo: '',
   phoneNo: '',
   idNo: '',
-  currentPage: 1
 });
-let { name, creditCardNo, phoneNo, idNo,  currentPage} =
-  toRefs(data);
+const currentPage = ref(1)
 const loginStatus = ref('')
 const tokenTest = ref('')
 const { counterStore ,userStore} = useStore()
@@ -208,11 +180,7 @@ onMounted(() => {
 })
 watchEffect(()=>{
 })
-// 使用toRefs解构
-// let { } = { ...toRefs(data) } 
-defineExpose({
-  ...toRefs(data)
-})
+
 
 </script>
 <style scoped>

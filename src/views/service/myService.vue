@@ -119,7 +119,7 @@ import BaseModal from '@/components/common/modal/index.vue'
 import {formatDate} from '@/utils/dates'
 import printHtml from "@/utils/printHtml.js"
 import {styleContent} from '@/assets/myService'
-// import print from 'print-js'
+
 let tranLists = ref(tranList)
 let currentPage = ref(1)
 let startDay = ref('')
@@ -137,11 +137,7 @@ const route = useRoute();
 * 路由实例
 */
 const router = useRouter();
-//console.log('1-开始创建组件-setup')
-/**
-* 数据部分
-*/
-const data = reactive({})
+
 onBeforeMount(() => {
   //console.log('2.组件挂载页面之前执行----onBeforeMount')
 })
@@ -150,11 +146,7 @@ onMounted(() => {
 })
 watchEffect(()=>{
 })
-// 使用toRefs解构
-// let { } = { ...toRefs(data) } 
-defineExpose({
-  ...toRefs(data)
-})
+
 const queryClick=()=>{
   queryBox.value = false
 }

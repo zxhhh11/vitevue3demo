@@ -127,16 +127,17 @@
   import { reactive, ref } from 'vue'
   import type { FormInstance, FormRules,Action } from 'element-plus'
   import {ElMessageBox} from 'element-plus'
-  import { Calendar, User} from '@element-plus/icons-vue'
+  import { User} from '@element-plus/icons-vue'
   import { handleLogin } from '@/apis/user';
   import { useRouter } from 'vue-router';
   import BaseModal from '@/components/common/modal/index.vue';
   import ImgVerify from '@/components/common/ImgVerify.vue'
-import axios from 'axios';
-const verifyRef = ref();
+  import axios from 'axios';
+
+  const verifyRef = ref();
   const router = useRouter();
   const formSize = ref('default')
-  let changepwd = ref(false)
+  const changepwd = ref(false)
   const ruleFormRef = ref<FormInstance>()
   const changePwdRef = ref<FormInstance>()
   const ruleForm = reactive({
@@ -270,14 +271,9 @@ const verifyRef = ref();
     let userNo = ruleForm.USERNO
     changePwdForm.USERNO =userNo
     changePwdForm.USERNAME =userNo
-    console.log(changePwdForm,ruleForm.USERNO)
     changepwd.value = true
   }
   
-  const options = Array.from({ length: 10000 }).map((_, idx) => ({
-    value: `${idx + 1}`,
-    label: `${idx + 1}`,
-  }))
   </script>
 <style>
 .login-bg{

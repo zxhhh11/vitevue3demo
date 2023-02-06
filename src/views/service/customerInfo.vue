@@ -169,51 +169,31 @@ import {customerInfoDatas,customerInfoList,cardList,accountList,customerDetailIn
 import CustomList  from '@/components/common/customList/index.vue'
 import BaseTable from '@/components/common/baseTable/index.vue';
 import BaseModal from '@/components/common/modal/index.vue'
+
 const cardVisiable = ref(false)
 const customerDetailVisiable = ref(false)
 const accoutDetailVisiable = ref(false)
-const customerDetailInfos = ref(customerDetailInfo)
-const customerInfos = ref(customerInfo)
-let commonlist = ref()
-let commondatas =ref()
-let title =ref()
-let NOTEINFO = ref('')
-let data = reactive({
-  name: '',
-  creditCardNo: '',
-  phoneNo: '',
-  idNo: '',
+const currentPage = ref(1)
+const accountCurrentPage = ref(1)
+const commonlist = ref()
+const commondatas =ref()
+const title =ref()
+const NOTEINFO = ref('')
+
+const data = reactive({
   cardLists: cardList,
-  listTotal: cardList.length,
-  accountLists: accountList,
-  accountListTotal: accountList.length,
-  currentPage: 1,
-  accountCurrentPage:1
+  accountLists: accountList
 });
-let { name, creditCardNo, phoneNo, idNo, listTotal, currentPage, cardLists,accountLists ,accountListTotal,accountCurrentPage} =
+let { cardLists,accountLists } =
   toRefs(data);
-const options = [
-  {
-    value: 'Option1',
-    label: 'Option1',
-  },
-  {
-    value: 'Option2',
-    label: 'Option2',
-  },
-  {
-    value: 'Option3',
-    label: 'Option3',
-  },
-  {
-    value: 'Option4',
-    label: 'Option4',
-  },
-  {
-    value: 'Option5',
-    label: 'Option5',
-  },
-]
+  
+const listTotal = computed(()=>{
+  return cardList.length
+})
+const accountListTotal = computed(()=>{
+  return accountList.length
+})
+
 const tableData = [
   {
     FILLTIME: '2016-05-03',
@@ -265,11 +245,7 @@ onMounted(() => {
 })
 watchEffect(()=>{
 })
-// 使用toRefs解构
-// let { } = { ...toRefs(data) } 
-defineExpose({
-  ...toRefs(data)
-})
+
 const handleClick = () => {},
     hideCardDialog=()=>{
       customerDetailVisiable.value= false

@@ -54,6 +54,7 @@ import { ref, reactive, toRefs, onBeforeMount, onMounted, watchEffect, computed 
 import { useRoute, useRouter } from 'vue-router';
 import {tranList} from '@/utils/data'
 import BaseTable from '@/components/common/baseTable/index.vue'
+
 let tranLists = ref(tranList)
 let querybox = ref(true)
 let currentPage = ref(1)

@@ -1,5 +1,5 @@
 <template>
-  <div>401</div>
+  <div>首页 显示银行卡图片页</div>
 </template>
 
 <script setup lang="ts">
