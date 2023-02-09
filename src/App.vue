@@ -10,10 +10,11 @@ import { RouterLink, RouterView } from "vue-router";
 </template>
 
 <style scoped>
- #app {
-    width: 100%;
-    height: 100%;
-  }
+#app {
+  width: 100%;
+  height: 100%;
+}
+
 /* header {
   line-height: 1.5;
   max-height: 100vh;

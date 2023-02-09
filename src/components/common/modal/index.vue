@@ -5,13 +5,8 @@ export default {
 </script>
 <template>
   <div>
-    <el-dialog
-      :title="title"
-      v-model="showModal"
-      :close-on-click-modal="false"
-      :before-close="hideHandle"
-      :width="width"
-    >
+    <el-dialog :title="title" v-model="showModal" :close-on-click-modal="false" :before-close="hideHandle"
+      :width="width">
       <!-- :before-close="handleClose" -->
       <slot></slot>
       <template #footer v-if="showFooter">
@@ -19,13 +14,7 @@ export default {
           <el-button @click="hideHandle" type="danger" plain size="small">{{
             cancelText
           }}</el-button>
-          <el-button
-            v-if="hasConfirm"
-            type="primary"
-            @click="confirmHandle"
-            size="small"
-            >{{ confirmText }}</el-button
-          >
+          <el-button v-if="hasConfirm" type="primary" @click="confirmHandle" size="small">{{ confirmText }}</el-button>
         </span>
       </template>
     </el-dialog>
@@ -59,7 +48,7 @@ const props = defineProps({
     type: Boolean,
     default: true
   },
-  showFooter:{
+  showFooter: {
     type: Boolean,
     default: true
   }
@@ -72,8 +61,8 @@ const emit = defineEmits<{
   (e: 'submit-handle'): void;
 }>();
 const hideHandle = () => {
-    emit('hide-dialog');
-  },
+  emit('hide-dialog');
+},
   confirmHandle = () => {
     emit('submit-handle');
   };

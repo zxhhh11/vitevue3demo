@@ -13,30 +13,14 @@ export default {
 <template>
   <div>
     <div v-if="title" class="card-title">{{ title }}</div>
-    <el-table
-      :data="tableData"
-      border
-      v-loading="loading"
-      size="small"
-      fit
-      :highlight-current-row="!isMutiSelect"
-      @selection-change="handleSelectionChange"
-      @current-change="handleCurrentChange"
-      style="width: 100%"
-      :default-sort="{
+    <el-table :data="tableData" border v-loading="loading" size="small" fit :highlight-current-row="!isMutiSelect"
+      @selection-change="handleSelectionChange" @current-change="handleCurrentChange" style="width: 100%" :default-sort="{
         prop: defaultSort,
         order: 'descending'
-      }"
-    >
+      }">
       <template v-for="(col, index) in newColumns()" :key="index">
-        <el-table-column
-          v-if="col.render"
-          :prop="col.prop"
-          :label="col.label"
-          :width="col.width ? col.width : ''"
-          :min-width="col.minWidth"
-          :show-overflow-tooltip="true"
-        >
+        <el-table-column v-if="col.render" :prop="col.prop" :label="col.label" :width="col.width ? col.width : ''"
+          :min-width="col.minWidth" :show-overflow-tooltip="true">
           <template #default="scope">
             <template v-if="!col.render">
               <span>{{ scope.row[col.prop] }}</span>
@@ -50,57 +34,28 @@ export default {
         <el-table-column type="selection" v-else-if="isMutiSelect" width="55">
         </el-table-column>
 
-        <el-table-column
-          v-else-if="col.formatter"
-          :label="col.label"
-          :formatter="col.formatter ? col.formatter : null"
-        >
+        <el-table-column v-else-if="col.formatter" :label="col.label" :formatter="col.formatter ? col.formatter : null">
         </el-table-column>
-        <el-table-column
-          v-else
-          :sortable="col.sortable"
-          :prop="col.prop"
-          :width="col.width ? col.width : ''"
-          :min-width="col.minwidth ? col.minwidth : ''"
-          :label="col.label"
-        >
+        <el-table-column v-else :sortable="col.sortable" :prop="col.prop" :width="col.width ? col.width : ''"
+          :min-width="col.minwidth ? col.minwidth : ''" :label="col.label">
           <template v-slot="{ row, column, $index }">
-            <b
-              v-if="col.isLink"
-              class="custom-link"
-              @click="col.onClick(row, column, $index)"
-              >{{ row[col.prop] }}</b
-            >
+            <b v-if="col.isLink" class="custom-link" @click="col.onClick(row, column, $index)">{{ row[col.prop] }}</b>
             <!-- 如果actions 部分是按钮的组合 可以使用这个方法 -->
             <!--   :class="btn.type ? 'btn-' + btn.type : 'btn-default'" -->
             <!--  :type="btn.type ? btn.type : ''"  由于element button 组件更新此方法不再适用于自定义按钮颜色-->
             <!--  :class="btn.type ? '' : btn.class ? 'btn-' + btn.class : ''" 由于element button 组件更新此方法不再适用于自定义按钮颜色 -->
             <div v-else-if="col.prop == 'actions'">
-              <el-button
-                size="small"
-                v-for="(btn, key) in col.actions"
-                @click="btn.onClick(row, column, $index)"
-                :round="btn.shape === 'round'"
-                :key="key"
-                :color="btn.type ? btn.type : ''"
-              >
-                {{ btn.text }}</el-button
-              >
+              <el-button size="small" v-for="(btn, key) in col.actions" @click="btn.onClick(row, column, $index)"
+                :round="btn.shape === 'round'" :key="key" :color="btn.type ? btn.type : ''">
+                {{ btn.text }}</el-button>
             </div>
             <span v-else>{{ row[col.prop] }}</span>
           </template>
         </el-table-column>
       </template>
     </el-table>
-    <el-pagination
-      v-if="hasPagination"
-     
-      v-model:currentPage="currentPageValue"
-      small
-      layout="total, prev, pager, next, jumper"
-      :total="total"
-      @current-change="handleCurrentChangePage"
-    />
+    <el-pagination v-if="hasPagination" v-model:currentPage="currentPageValue" small
+      layout="total, prev, pager, next, jumper" :total="total" @current-change="handleCurrentChangePage" />
   </div>
 </template>
 
@@ -170,8 +125,8 @@ const emit = defineEmits<{
   // (e: 'hide-dialog2'): void;
 }>();
 const handleCurrentChangePage = (val: any) => {
-    emit('handleCurrent', val);
-  },
+  emit('handleCurrent', val);
+},
   handleSelectionChange = (val: any) => {
     multipleSelection.value = val;
     // console.log(val, 'select')
@@ -204,57 +159,68 @@ const currentPageValue = computed({
   padding-top: 20px;
   text-align: right;
   background-color: '#fff';
- 
- 
+
+
 }
-.base-pagination  .el-pagination__total,
-.base-pagination   .el-pagination__sizes,
-.base-pagination  .el-pagination__jump {
-    font-size: 12px;
-    line-height: 20px;
-  }
-  .base-pagination  .el-pagination__total,
-  .base-pagination  .el-pagination__sizes {
-    float: left;
-  }
-  .base-pagination  .btn-prev,
-  .base-pagination  .btn-next,
-  .base-pagination  .el-pager li {
-    margin: 0px 5px;
-    font-size: 12px;
-    height: 20px;
-    line-height: 20px;
-  }
-  .base-pagination  .el-pager li {
-    font-weight: 400;
-    color: #606266;
-    margin: 0 5px;
-    min-width: 20px;
-    height: 20px;
-    line-height: 20px;
-    border-radius: 2px;
-  }
-  .base-pagination  .el-pager li:not(.disabled).active {
-    background-color: #2a76cd;
-    color: #ffffff;
-  }
-  .base-pagination  .el-input .el-input__inner {
-    height: 20px;
-    line-height: 20px;
-  }
-  .base-pagination  .el-input--small .el-input__icon {
-    line-height: 20px;
-  }
-  .base-pagination  .btn-prev {
-    padding-right: 0px;
-  }
-  .base-pagination  .btn-next {
-    padding-left: 0px;
-  }
-  .base-pagination  .el-pagination button,
-  .base-pagination  .el-pagination span:not([class*='suffix']) {
-    min-width: 25.5px;
-  }
+
+.base-pagination .el-pagination__total,
+.base-pagination .el-pagination__sizes,
+.base-pagination .el-pagination__jump {
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.base-pagination .el-pagination__total,
+.base-pagination .el-pagination__sizes {
+  float: left;
+}
+
+.base-pagination .btn-prev,
+.base-pagination .btn-next,
+.base-pagination .el-pager li {
+  margin: 0px 5px;
+  font-size: 12px;
+  height: 20px;
+  line-height: 20px;
+}
+
+.base-pagination .el-pager li {
+  font-weight: 400;
+  color: #606266;
+  margin: 0 5px;
+  min-width: 20px;
+  height: 20px;
+  line-height: 20px;
+  border-radius: 2px;
+}
+
+.base-pagination .el-pager li:not(.disabled).active {
+  background-color: #2a76cd;
+  color: #ffffff;
+}
+
+.base-pagination .el-input .el-input__inner {
+  height: 20px;
+  line-height: 20px;
+}
+
+.base-pagination .el-input--small .el-input__icon {
+  line-height: 20px;
+}
+
+.base-pagination .btn-prev {
+  padding-right: 0px;
+}
+
+.base-pagination .btn-next {
+  padding-left: 0px;
+}
+
+.base-pagination .el-pagination button,
+.base-pagination .el-pagination span:not([class*='suffix']) {
+  min-width: 25.5px;
+}
+
 .el-pagination {
   justify-content: right;
 }

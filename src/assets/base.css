@@ -73,11 +73,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: #f4f8fa;
 }
-html,body{
+
+html,
+body {
   width: 100%;
   height: 100%;
 }
-.common-layout,.el-container.is-vertical{
+
+.common-layout,
+.el-container.is-vertical {
   height: 100%;
 }
 

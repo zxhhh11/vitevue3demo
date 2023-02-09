@@ -1,11 +1,11 @@
-interface MockRouterType{
-  path:string,
-  title:string,
-  name:string,
-  icon?:string,
-  quickCheck?:string,
-  children?:MockRouterType[],
-  address?:string
+interface MockRouterType {
+  path: string,
+  title: string,
+  name: string,
+  icon?: string,
+  quickCheck?: string,
+  children?: MockRouterType[],
+  address?: string
 }
 
 export const originalMockRouters: MockRouterType[] = [
@@ -59,7 +59,7 @@ export const originalMockRouters: MockRouterType[] = [
         name: 'guestDetailStatSheet',
         address: '2-1',
         quickCheck: 'YKMXTJB'
-       
+
       }
     ]
   },
@@ -211,7 +211,7 @@ export const originalMockRouters: MockRouterType[] = [
         name: 'installmentTradeAndReduce',
         address: '4-1',
         quickCheck: 'FQJYTQJSBJMSXF'
-       
+
       },
       {
         path: '/OperatFun/customerAndAccountFLAgjust',
@@ -219,7 +219,7 @@ export const originalMockRouters: MockRouterType[] = [
         name: 'customerAndAccountFLAgjust',
         address: '4-2',
         quickCheck: 'KHZHWJFLPLTZSQ'
-       
+
       }
     ]
   }
@@ -256,12 +256,12 @@ export const serviceMockRouters: MockRouterType[] = [
         title: '本柜员交易流水查询',
         name: 'inquirTranFlow',
       },
-      
+
     ]
   }
 ];
 
-let routeQuery: Omit<MockRouterType,'name'|'icon'|'children'>[] = [];  //从MockRouterType去'name'|'icon' 的类型定义
+let routeQuery: Omit<MockRouterType, 'name' | 'icon' | 'children'>[] = [];  //从MockRouterType去'name'|'icon' 的类型定义
 // 将 menu 转化成用于导航快速检索的列表
 const routeQueryHandle = (original: MockRouterType[]) => {
   original.map((item: MockRouterType, index: number) => {

@@ -1,17 +1,19 @@
 <script lang="ts" setup>
-import { onMounted, computed, reactive, toRefs ,ref} from 'vue'
+import { onMounted, computed, reactive, toRefs, ref } from 'vue'
 import { Edit } from '@element-plus/icons-vue'
 import router from '@/router/index';
 // import { routes } from '@/router/index';
 import { useRoute } from 'vue-router';
-import { originalMockRouters, routeQueryAll,serviceMockRouters } from '@/utils/routers';
+import { originalMockRouters, routeQueryAll, serviceMockRouters } from '@/utils/routers';
 import usePermissionStore from '@/stores/permission'
+import SidebarItem from '@/layout/sidebar/sidebarItem.vue'
 const permissionStore = usePermissionStore()
+const sidebarRouters: any = computed(() => permissionStore.sidebarRouters);
 interface LinkItem {
   value: string
   address: string,
-  path:string,
-  quickCheck:string
+  path: string,
+  quickCheck: string
 }
 interface RouteType {
   title?: string;
@@ -29,9 +31,8 @@ const data = reactive({
   mockRouters: originalMockRouters
   // testNum: 1
 });
-let { allMenus,  mockRouters } = toRefs(data);
-const sidebarRouters =  computed(() => permissionStore.sidebarRouters);
-console.log(sidebarRouters.value,'sidebarRouters 333')
+let { allMenus, mockRouters } = toRefs(data);
+
 const route = useRoute();
 const onRoutes = computed(() => {
   return route.path;
@@ -42,12 +43,12 @@ const onRoutes = computed(() => {
 //       {
 //         return item.quickCheck.toLowerCase().includes(queryString.toLowerCase())
 //       })
-      
+
 //     cb(results);
 // },
-  // clearQuickQuery=()=>{
-  //   mockRouters.value = originalMockRouters
-  // }
+// clearQuickQuery=()=>{
+//   mockRouters.value = originalMockRouters
+// }
 // const loadAll = () => {
 //   return [
 //           { "value": "本人名下要客信息查询", "path": "/guestManagerMod/inquireCustomerInfo","address":"0-0","quickCheck":"BRMXYKXXCX"},
@@ -76,26 +77,24 @@ const onRoutes = computed(() => {
 //           { "value": "客户、账户五级分类批量调整申请", "path": "/OperatFun/customerAndAccountFLAgjust","address":"3-2","quickCheck":"KHZHWJFLPLTZSQ" }
 //         ];
 // }
-const handleSelect = (item: LinkItem) => {
-  if (route.path === item.path) {
-    return;
-  }
-  if (item.path) {
-    const local = item.address.slice(0, 1);
-    mockRouters.value = [originalMockRouters[Number(local)]];
-    router.push(item.path);
-  }
-}
+// const handleSelect = (item: LinkItem) => {
+//   if (route.path === item.path) {
+//     return;
+//   }
+//   if (item.path) {
+//     const local = item.address.slice(0, 1);
+//     mockRouters.value = [originalMockRouters[Number(local)]];
+//     router.push(item.path);
+//   }
+// }
 
-const handleIconClick = (ev: Event) => {
-  console.log(ev)
-}
+
 const handleOpen = (key: string, keyPath: string[]) => {
+  //console.log(key, keyPath);
+  // state.obj.testNum = state.obj.testNum + 2;
+},
+  handleClose = (key: string, keyPath: string[]) => {
     //console.log(key, keyPath);
-    // state.obj.testNum = state.obj.testNum + 2;
-  },
-  handleClose = (key: string, keyPath:  string[]) => {
-     //console.log(key, keyPath);
     // state.obj.testNum++;
   };
 onMounted(() => {
@@ -104,8 +103,8 @@ onMounted(() => {
 </script>
 
 <template>
-<div class="side-box">
-  <!--  快速查找相关 -->
+  <div class="side-box">
+    <!--  ***快速查找相关 ***-->
     <!-- <div class="search-box">
         <el-autocomplete
         id="quickSearch"
@@ -126,55 +125,19 @@ onMounted(() => {
   </el-autocomplete>
 
     </div> -->
+    <!--  ***快速查找相关 ***-->
     <el-aside width="220px">
-          <el-scrollbar>
-            <el-menu
-          :default-active="onRoutes"
-          class="el-menu-vertical-demo"
-          @open="handleOpen"
-          @close="handleClose"
-          router
-        >
-          <template v-for="item in mockRouters">
-            <template v-if="item.children">
-              <el-sub-menu :index="item.path" :key="item.path">
-                <template #title>
-                  <svg class="icon" aria-hidden="true">
-                    <use :xlink:href="item.icon"></use>
-                  </svg>
-                  <span>&nbsp;{{ item?.title }}</span>
-                </template>
-                <template v-for="subItem in item.children" :key="subItem.path">
-                  <el-sub-menu v-if="subItem.children" :index="subItem.path">
-                    <template #title>{{ subItem?.title }}</template>
-                    <el-menu-item
-                      v-for="(threeItem, i) in subItem.children"
-                      :key="i"
-                      :index="threeItem.path"
-                    >
-                      {{ threeItem?.title }}</el-menu-item
-                    >
-                  </el-sub-menu>
-                  <el-menu-item v-else :index="subItem.path"
-                    >{{ subItem?.title }}
-                  </el-menu-item>
-                </template>
-              </el-sub-menu>
-            </template>
-            <template v-else>
-              <el-menu-item :index="item.path" :key="item.path">
-                <svg class="icon" aria-hidden="true">
-                  <use :xlink:href="item.icon"></use>
-                </svg>
-                <template #title>&nbsp;{{ item?.title }}</template>
-              </el-menu-item>
-            </template>
-          </template>
-        </el-menu> 
+      <el-scrollbar>
+        <el-menu :default-active="onRoutes" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
+          router>
+          <SidebarItem v-for="(route, index) in sidebarRouters" :key="route.path + index" :item="route"
+            :base-path="route.path">
+          </SidebarItem>
+        </el-menu>
       </el-scrollbar>
-        </el-aside>
-        <!-- 我的服务相关的底部导航 -->
-        <!-- <div class="tips">
+    </el-aside>
+    <!-- 我的服务相关的底部导航 -->
+    <!-- <div class="tips">
 
           <el-menu
           :default-active="onRoutes"
@@ -219,79 +182,88 @@ onMounted(() => {
           </template>
         </el-menu>
         </div> -->
-</div>
+  </div>
 
 </template>
 
 <style>
-.side-box{
-    height: calc(100vh - 90px);
-    display: flex;
-    flex-direction: column;
-}
-.el-aside{
-    background-color: #fff;
-    /* height: calc(100vh - 250px); */
-    flex: 1;
+.side-box {
+  height: calc(100vh - 90px);
+  display: flex;
+  flex-direction: column;
 }
 
+.el-aside {
+  background-color: #fff;
+  flex: 1;
+}
 
-.search-box{
-    margin: 2px 0 2px 2px;
-    width: 218px;
-    height: 32px;
+.search-box {
+  margin: 2px 0 2px 2px;
+  width: 218px;
+  height: 32px;
 }
 
 .my-autocomplete li {
   line-height: normal;
   padding: 7px;
 }
+
 .my-autocomplete li .name {
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
 .my-autocomplete li .addr {
   font-size: 12px;
   color: #b4b4b4;
 }
+
 .my-autocomplete li .highlighted .addr {
   color: #ddd;
 }
+
 .el-menu {
-    height: 100%;
-    /* border-right: 0; */
-  }
-  .el-menu-item .is-active {
-        background-color: #f5dcde;
-        color: #a71e32;
-        /* border-right: 2px solid #a71e32; */
-     
-    }
-  .el-menu  .el-sub-menu__title,.el-menu .el-menu-item {
-      height: 40px;
-      line-height: 40px;
-     
-    }
-.el-menu-item iconpark-icon {
-    margin-right: 6px;
-    vertical-align: middle;
-  }
-  .el-menu  .el-sub-menu  .el-menu-item {
-    height: 36px;
-    line-height: 36px;
+  height: 100%;
 }
-.el-autocomplete.el-tooltip__trigger.el-tooltip__trigger{
+
+.el-menu-item .is-active {
+  background-color: #f5dcde;
+  color: #a71e32;
+}
+
+.el-menu .el-sub-menu__title,
+.el-menu .el-menu-item {
+  height: 40px;
+  line-height: 40px;
+
+}
+
+.el-menu-item iconpark-icon {
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.el-menu .el-sub-menu .el-menu-item {
+  height: 36px;
+  line-height: 36px;
+}
+
+.el-autocomplete.el-tooltip__trigger.el-tooltip__trigger {
   width: 100%;
 }
-.el-scrollbar__wrap .el-scrollbar__view{
-height: 100%;
+
+.el-scrollbar__wrap .el-scrollbar__view {
+  height: 100%;
 }
-.side-box .tips{
-    margin-top: 8px;
-    background-color: #fff;
-    height: 200px;
-    width: 220px;
+
+.side-box .tips {
+  margin-top: 8px;
+  background-color: #fff;
+  height: 200px;
+  width: 220px;
 }
+
 /* .tips .el-menu.el-menu--vertical .el-sub-menu .el-menu-item{
   padding-left: 10px;
 } */
@@ -301,16 +273,19 @@ height: 100%;
 .side-box .el-menu--vertical:not(.el-menu--collapse):not(.el-menu--popup-container) .el-menu-item{
   padding-left: 14px;
 } */
-.tips .el-menu .el-sub-menu .el-menu-item{
+.tips .el-menu .el-sub-menu .el-menu-item {
   height: 30px;
-    line-height: 30px;
+  line-height: 30px;
 }
-.side-box .el-aside{
+
+.side-box .el-aside {
   border-right: 1px solid #dcdfe6;
 }
-.el-aside .el-menu{
+
+.el-aside .el-menu {
   border-right: 0;
 }
+
 /* .side-box .el-scrollbar{
   padding: 0 10px 0 0;
 } */

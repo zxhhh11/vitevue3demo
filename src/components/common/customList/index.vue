@@ -2,39 +2,24 @@
 <template>
   <div>
     <div class="custom-list" v-for="(data, index) in datas" :key="index">
-      <el-descriptions
-        :title="title"
-        :class="customClass"
-        :column="column"
-        size="small"
-        :labelStyle="labelStyle"
-        border
-      >
+      <el-descriptions :title="title" :class="customClass" :column="column" size="small" :labelStyle="labelStyle"
+        border>
         <!-- 这里有跨组件传递slot的demo grandFather->parent-child   parent-->
         <template #extra>
           <slot name="extra"></slot>
         </template>
         <template v-for="(item, key) in list" :key="key">
-          <el-descriptions-item
-            v-if="showMore"
-            :span="item.span ? item.span : span"
-            :label-class-name="labelClassName"
-          >
+          <el-descriptions-item v-if="showMore" :span="item.span ? item.span : span" :label-class-name="labelClassName">
             <template #label>
-            <div :class="item.labelClass">  {{ item.label }}</div>
+              <div :class="item.labelClass"> {{ item.label }}</div>
             </template>
             <template v-if="item.isTag">
-              <el-tag
-                size="small"
-                :class="['card-status', 'card-type-' + item.type]"
-              >
-                {{ data[item.value] }}</el-tag
-              >
+              <el-tag size="small" :class="['card-status', 'card-type-' + item.type]">
+                {{ data[item.value] }}</el-tag>
             </template>
             <template v-else-if="item.isLink">
               <b class="custom-link" @Click="linkHandle(data)">
-                {{ data[item.value] }}</b
-              >
+                {{ data[item.value] }}</b>
             </template>
             <template v-else> {{ data[item.value] }}</template>
           </el-descriptions-item>
@@ -54,7 +39,7 @@
 
 <script lang="ts" setup>
 import { onMounted, reactive, computed } from 'vue';
-import type {PropType}from 'vue';
+import type { PropType } from 'vue';
 export interface ListType {
   label: string;
   value: string;
@@ -62,7 +47,7 @@ export interface ListType {
   type?: string;
   span?: number;
   isLink?: boolean;
-  labelClass?:string;
+  labelClass?: string;
 }
 export interface DataType {
   [key: string]: any;
@@ -109,6 +94,7 @@ onMounted(() => {
 .label-width-100 {
   width: 100px !important;
 }
+
 .el-tag.card-status {
   white-space: inherit;
   height: auto;

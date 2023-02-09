@@ -1,5 +1,5 @@
 <template>
-  <div >guestStatSheet</div>
+  <div>guestStatSheet</div>
 </template>
 
 <script setup lang="ts">
@@ -24,7 +24,7 @@ onBeforeMount(() => {
 onMounted(() => {
   //console.log('3.-组件挂载到页面之后执行-------onMounted')
 })
-watchEffect(()=>{
+watchEffect(() => {
 })
 // 使用toRefs解构
 // let { } = { ...toRefs(data) } 
@@ -34,4 +34,5 @@ defineExpose({
 
 </script>
 <style scoped>
+
 </style>

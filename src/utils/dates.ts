@@ -1,5 +1,5 @@
 // 格式化日期格式如：2017-9-19 18:04:33
-export function formatDate(value:any, type?:string) {
+export function formatDate(value: any, type?: string) {
     // 计算日期相关值
     let time = typeof value == 'number' ? new Date(value) : value;
     let Y = time.getFullYear();

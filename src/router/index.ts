@@ -9,7 +9,7 @@ import usePermissionStore from '@/stores/permission'
 import NProgress from '@/utils/progress';
 // import RoutesMapConfig from './routes';
 import Layout from '@/layout/index.vue';
-import {isHttp} from '@/utils/validate'
+import { isHttp } from '@/utils/validate'
 // import { toRouteType } from './types';
 // console.log(usePermissionStore,'usePermissionStore')
 
@@ -35,19 +35,20 @@ import axios from "axios";
     activeMenu: '/system/user'      // 当路由设置了该属性，则会高亮相对应的侧边栏。
   }
  */
-export type RoutesType = RouteRecordRaw & { hidden?:boolean }
+export type RoutesType = RouteRecordRaw & { hidden?: boolean }
 
 //公共路由
-export let routes: Array<RoutesType> = [
+export let constantRoutes: Array<RoutesType> = [
   {
     path: '/login',
     name: 'Login',
+    hidden: true,
     meta: {
       title: '登录'
     },
     component: () => import('@/views/Login.vue')
   },
- 
+
   {
     path: '/401',
     component: () => import('@/views/error/401.vue'),
@@ -71,15 +72,15 @@ export let routes: Array<RoutesType> = [
   //   redirect: '/login',
   // },
   {
-    path:'/',
-    component:Layout,
-    redirect:'/index',
-    children:[
+    path: '/',
+    component: Layout,
+    redirect: '/index',
+    children: [
       {
         path: '/index',
-        name:'index',
-        component:() => import('@/views/index.vue'),
-        meta: { title: '首页', icon: 'home', affix: true }
+        name: 'index',
+        component: () => import('@/views/index.vue'),
+        meta: { title: '首页', icon: '#icon-home1', affix: true }
       }
     ]
   },
@@ -112,7 +113,7 @@ export let routes: Array<RoutesType> = [
   //     }
   //   ]
   // },
- 
+
 ];
 const errorPage = {
   path: "/:pathMatch(.*)*",
@@ -123,7 +124,7 @@ const errorPage = {
 
 const router = createRouter({
   history: createWebHistory(),
-  routes,
+  routes: constantRoutes,
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition
@@ -147,7 +148,7 @@ const whiteList = ['/login', '/auth-redirect', '/bind', '/register'];
 //       })
 //     })
 //   }
- 
+
 // }
 // export async function init(){
 // if(sessionStorage.getItem('router')){
@@ -159,39 +160,39 @@ const whiteList = ['/login', '/auth-redirect', '/bind', '/register'];
 // }
 // }
 
-router.beforeEach(async(to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   NProgress.start();
-    if(token){
-      if(!usePermissionStore().isFlag){
-        if (hasRoles) {
+  if (token) {
+    if (!usePermissionStore().isFlag) {
+      if (hasRoles) {
         //  init()
-     await usePermissionStore().generateRoutes()
-   
-          let arr = usePermissionStore().addRoutes
+        await usePermissionStore().generateRoutes()
+
+        let arr = usePermissionStore().addRoutes
         console.log(arr)
         arr.forEach(r => {
-            router.addRoute(r) // 动态添加可访问路由表
+          router.addRoute(r) // 动态添加可访问路由表
         })
-         next({...to,replace:true})
-          hasRoles=false
-        }else{
-          next()
-        }
-      }else{
-        console.log(222)
-        next()
-      }
-    }else{
-      if (whiteList.indexOf(to.path) !== -1) {
-        // 在免登录白名单，直接进入
-        next()
+        next({ ...to, replace: true })
+        hasRoles = false
       } else {
-        next('/login') // 否则全部重定向到登录页
-        NProgress.done()
+        next()
       }
+    } else {
+      console.log(222)
+      next()
     }
- 
- 
+  } else {
+    if (whiteList.indexOf(to.path) !== -1) {
+      // 在免登录白名单，直接进入
+      next()
+    } else {
+      next('/login') // 否则全部重定向到登录页
+      NProgress.done()
+    }
+  }
+
+
 })
 // router.beforeEach((to, from, next) => {
 //   NProgress.start();
@@ -206,7 +207,7 @@ router.beforeEach(async(to, from, next) => {
 //               console.log(r.path,'route.path')
 //                 router.addRoute(r) // 动态添加可访问路由表
 //             })
-            
+
 //           })
 //           next({...to,replace:true})
 //           hasRoles=false
@@ -222,23 +223,23 @@ router.beforeEach(async(to, from, next) => {
 //       next({path:'/login'})
 //     }
 //   }
- 
+
 // })
 
- 
-  
-  // const role = localStorage.getItem('ms_username');
-  // if (!role && to.path !== '/login') {
-  //   next('/login');
-  // } else if (to.meta.permission) {
-  //   // 如果是管理员权限则可进入，这里只是简单的模拟管理员权限而已
-  //   role === 'admin' ? next() : next('/403');
-  // } else {
-  //   next();
- 
-   
-  // }
-  
+
+
+// const role = localStorage.getItem('ms_username');
+// if (!role && to.path !== '/login') {
+//   next('/login');
+// } else if (to.meta.permission) {
+//   // 如果是管理员权限则可进入，这里只是简单的模拟管理员权限而已
+//   role === 'admin' ? next() : next('/403');
+// } else {
+//   next();
+
+
+// }
+
 // });
 
 
