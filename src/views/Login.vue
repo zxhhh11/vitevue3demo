@@ -201,8 +201,9 @@
         PWD: ruleForm.PWD,
         vertifyCode: ruleForm.vertifyCode
       }).then(res=>{
+        console.log(res,'res')
        if(res.data.status===200){
-        router.push('/guestManagerMod');
+        router.push('/index');
        }
       })
       //   handleLogin({

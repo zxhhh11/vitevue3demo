@@ -27,9 +27,9 @@
             :name="item.name"
             :closable="item.closable"
         >
-            <transition name="fade-transform" mode="out-in">
+            <!-- <transition name="fade-transform" mode="out-in"> -->
                  <component :is="item.content" :key="new Date()"></component>
-            </transition>
+            <!-- </transition> -->
         </el-tab-pane>
     </el-tabs>
   </div>

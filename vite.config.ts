@@ -38,6 +38,7 @@ export default defineConfig({
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
+    extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json']
   },
   // 构建 此方法不推荐 打包后样式页面会出现问题  需要再调整
   // build: {
@@ -78,42 +79,31 @@ export default defineConfig({
   //   }
   // },
   base: './',
-   server: {
-    // port:8080,
-    port:9855,
-    // client:{
-    //   webSocketURL:'ws://192.168.106.54:8080/ws'
-    // },
-    open:true,
-    proxy: {
-      // '/login': {
-      //   target: 'http://172.20.10.2:9855',
-      //   changeOrigin: true,
-      //   // rewrite: (path) => {
-      //   //   console.log(path)
-      //   //  return path.replace(/^\/login/, '')
-      //   // },// 不可以省略rewrite
-      //   // pathRewrite: { '^/api': '' },
-      //   // ws:false
-      //   // secure: false
-      //   rewrite:path => path.replace(/^\/api/, '')
-      // }
-      // 下面的是最后生效的
-      '/api': {
-        target: 'http://172.20.10.2:9855',
-        changeOrigin: true,
-        // ws:false
-        // secure: false
-        rewrite:path => path.replace(/^\/api/, '')
-      }
-    },
-    // headers: {
-    //   'Access-Control-Allow-Origin': '*'
-    // },
-    // overlay: {
-    //   warnings: false,
-    //   errors: false
-    // },
-    // hot: true
-  }
+  //  server: {
+  //   port:9855,
+  //   open:true,
+  //   proxy: {
+  //     // '/login': {
+  //     //   target: 'http://172.20.10.2:9855',
+  //     //   changeOrigin: true,
+  //     //   // rewrite: (path) => {
+  //     //   //   console.log(path)
+  //     //   //  return path.replace(/^\/login/, '')
+  //     //   // },// 不可以省略rewrite
+  //     //   // pathRewrite: { '^/api': '' },
+  //     //   // ws:false
+  //     //   // secure: false
+  //     //   rewrite:path => path.replace(/^\/api/, '')
+  //     // }
+  //     // 下面的是最后生效的
+  //     '/api': {
+  //       target: 'http://172.20.10.2:9855',
+  //       changeOrigin: true,
+  //       rewrite:path => path.replace(/^\/api/, '')
+  //     }
+  //   },
+  //   headers: {
+  //     'Access-Control-Allow-Origin': '*'
+  //   }
+  // }
 });

@@ -5,6 +5,8 @@ import router from '@/router/index';
 // import { routes } from '@/router/index';
 import { useRoute } from 'vue-router';
 import { originalMockRouters, routeQueryAll,serviceMockRouters } from '@/utils/routers';
+import usePermissionStore from '@/stores/permission'
+const permissionStore = usePermissionStore()
 interface LinkItem {
   value: string
   address: string,
@@ -28,51 +30,52 @@ const data = reactive({
   // testNum: 1
 });
 let { allMenus,  mockRouters } = toRefs(data);
-
+const sidebarRouters =  computed(() => permissionStore.sidebarRouters);
+console.log(sidebarRouters.value,'sidebarRouters 333')
 const route = useRoute();
 const onRoutes = computed(() => {
   return route.path;
 });
-const querySearch = (queryString: string, cb:any) => {
-  let  queryMenus = allMenus;
-      const results = queryMenus.value.filter((item:any)=>
-      {
-        return item.quickCheck.toLowerCase().includes(queryString.toLowerCase())
-      })
+// const querySearch = (queryString: string, cb:any) => {
+//   let  queryMenus = allMenus;
+//       const results = queryMenus.value.filter((item:any)=>
+//       {
+//         return item.quickCheck.toLowerCase().includes(queryString.toLowerCase())
+//       })
       
-    cb(results);
-},
-  clearQuickQuery=()=>{
-    mockRouters.value = originalMockRouters
-  }
-const loadAll = () => {
-  return [
-          { "value": "本人名下要客信息查询", "path": "/guestManagerMod/inquireCustomerInfo","address":"0-0","quickCheck":"BRMXYKXXCX"},
-          { "value": "要客经理修改维护", "path": "/guestManagerMod/guestManagerModify","address":"0-1","quickCheck":"YKJLXGWH" },
-          { "value": "要客客户统计表", "path": "/guestReport/guestStatSheet" ,"address":"1-0","quickCheck":"YKKHTJB"},
-          { "value": "要客明细统计表", "path": "/guestReport/guestDetailStatSheet","address":"1-1" ,"quickCheck":"YKMXTJB"},
-          { "value": "分行要客维护", "path": "/queryFun/branchGuestMaint","address":"2-0","quickCheck":"FHYKWH" },
-          { "value": "短信渠道历史查询", "path": "/queryFun/SMSHisyQuery","address":"2-1","quickCheck":"DXQDLSCX" },
-          { "value": "个人卡合并账单查询", "path": "/queryFun/personCardBill" ,"address":"2-2","quickCheck":"GRKHBZDCX"},
-          { "value": "客户权益信息查询", "path": "/queryFun/customerRightsInfo","address":"2-3","quickCheck":"KHQYXXCX" },
-          { "value": "申请件进度查询", "path": "/queryFun/applyProgress","address":"2-4","quickCheck":"SQJJDCX" },
-          { "value": "信用卡额度查询", "path": "/queryFun/creditCardLimit","address":"2-5","quickCheck":"XYKEDCX" },
-          { "value": "信用卡交易查询", "path": "/queryFun/creditCardTrans","address":"2-6","quickCheck":"XYKJYCX" },
-          { "value": "信用卡账单查询", "path": "/queryFun/creditCardBill","address":"2-7","quickCheck":"XYKZDCX" },
-          { "value": "信用卡信息查询", "path": "/queryFun/creditCardInfo","address":"2-8","quickCheck":"XYKXXCX" },
-          { "value": "信用卡状态查询", "path": "/queryFun/creditCardStatus","address":"2-9","quickCheck":"XYKZTCX" },
-          { "value": "主附卡关系查询", "path": "/queryFun/mainAttachedCard","address":"2-10","quickCheck":"ZFKGXCX" },
-          { "value": "年费减免查询", "path": "/queryFun/annualFeeWaiver","address":"2-11","quickCheck":"NFJMCX" },
-          { "value": "账户状态查询", "path": "/queryFun/accountStatus","address":"2-12","quickCheck":"ZHZTCX" },
-          { "value": "公务卡信息查询", "path": "/queryFun/officialCardInfo","address":"2-13","quickCheck":"GWKXXCX" },
-          { "value": "换卡历史记录查询", "path": "/queryFun/cardReplaceHisy","address":"2-14","quickCheck":"HKLSJLCX" },
-          { "value": "金融历史查询", "path": "/queryFun/financialHisy","address":"2-15","quickCheck":"JRLSCX" },
-          { "value": "信用卡授权查询", "path": "/queryFun/creditCardAuth","address":"2-16","quickCheck":"XYKSQCX" },
-          { "value": "交易短信通知触发金额", "path": "/OperatFun/tranSMSNotif","address":"3-0","quickCheck":"JYDXTZCFJE" },
-          { "value": "分期交易提前结算并减免手续费", "path": "/OperatFun/installmentTradeAndReduce","address":"3-1","quickCheck":"FQJYTQJSBJMSXF" },
-          { "value": "客户、账户五级分类批量调整申请", "path": "/OperatFun/customerAndAccountFLAgjust","address":"3-2","quickCheck":"KHZHWJFLPLTZSQ" }
-        ];
-}
+//     cb(results);
+// },
+  // clearQuickQuery=()=>{
+  //   mockRouters.value = originalMockRouters
+  // }
+// const loadAll = () => {
+//   return [
+//           { "value": "本人名下要客信息查询", "path": "/guestManagerMod/inquireCustomerInfo","address":"0-0","quickCheck":"BRMXYKXXCX"},
+//           { "value": "要客经理修改维护", "path": "/guestManagerMod/guestManagerModify","address":"0-1","quickCheck":"YKJLXGWH" },
+//           { "value": "要客客户统计表", "path": "/guestReport/guestStatSheet" ,"address":"1-0","quickCheck":"YKKHTJB"},
+//           { "value": "要客明细统计表", "path": "/guestReport/guestDetailStatSheet","address":"1-1" ,"quickCheck":"YKMXTJB"},
+//           { "value": "分行要客维护", "path": "/queryFun/branchGuestMaint","address":"2-0","quickCheck":"FHYKWH" },
+//           { "value": "短信渠道历史查询", "path": "/queryFun/SMSHisyQuery","address":"2-1","quickCheck":"DXQDLSCX" },
+//           { "value": "个人卡合并账单查询", "path": "/queryFun/personCardBill" ,"address":"2-2","quickCheck":"GRKHBZDCX"},
+//           { "value": "客户权益信息查询", "path": "/queryFun/customerRightsInfo","address":"2-3","quickCheck":"KHQYXXCX" },
+//           { "value": "申请件进度查询", "path": "/queryFun/applyProgress","address":"2-4","quickCheck":"SQJJDCX" },
+//           { "value": "信用卡额度查询", "path": "/queryFun/creditCardLimit","address":"2-5","quickCheck":"XYKEDCX" },
+//           { "value": "信用卡交易查询", "path": "/queryFun/creditCardTrans","address":"2-6","quickCheck":"XYKJYCX" },
+//           { "value": "信用卡账单查询", "path": "/queryFun/creditCardBill","address":"2-7","quickCheck":"XYKZDCX" },
+//           { "value": "信用卡信息查询", "path": "/queryFun/creditCardInfo","address":"2-8","quickCheck":"XYKXXCX" },
+//           { "value": "信用卡状态查询", "path": "/queryFun/creditCardStatus","address":"2-9","quickCheck":"XYKZTCX" },
+//           { "value": "主附卡关系查询", "path": "/queryFun/mainAttachedCard","address":"2-10","quickCheck":"ZFKGXCX" },
+//           { "value": "年费减免查询", "path": "/queryFun/annualFeeWaiver","address":"2-11","quickCheck":"NFJMCX" },
+//           { "value": "账户状态查询", "path": "/queryFun/accountStatus","address":"2-12","quickCheck":"ZHZTCX" },
+//           { "value": "公务卡信息查询", "path": "/queryFun/officialCardInfo","address":"2-13","quickCheck":"GWKXXCX" },
+//           { "value": "换卡历史记录查询", "path": "/queryFun/cardReplaceHisy","address":"2-14","quickCheck":"HKLSJLCX" },
+//           { "value": "金融历史查询", "path": "/queryFun/financialHisy","address":"2-15","quickCheck":"JRLSCX" },
+//           { "value": "信用卡授权查询", "path": "/queryFun/creditCardAuth","address":"2-16","quickCheck":"XYKSQCX" },
+//           { "value": "交易短信通知触发金额", "path": "/OperatFun/tranSMSNotif","address":"3-0","quickCheck":"JYDXTZCFJE" },
+//           { "value": "分期交易提前结算并减免手续费", "path": "/OperatFun/installmentTradeAndReduce","address":"3-1","quickCheck":"FQJYTQJSBJMSXF" },
+//           { "value": "客户、账户五级分类批量调整申请", "path": "/OperatFun/customerAndAccountFLAgjust","address":"3-2","quickCheck":"KHZHWJFLPLTZSQ" }
+//         ];
+// }
 const handleSelect = (item: LinkItem) => {
   if (route.path === item.path) {
     return;
@@ -96,13 +99,14 @@ const handleOpen = (key: string, keyPath: string[]) => {
     // state.obj.testNum++;
   };
 onMounted(() => {
-  allMenus.value = loadAll()
+  // allMenus.value = loadAll()
 })
 </script>
 
 <template>
 <div class="side-box">
-    <div class="search-box">
+  <!--  快速查找相关 -->
+    <!-- <div class="search-box">
         <el-autocomplete
         id="quickSearch"
     v-model="state"
@@ -121,7 +125,7 @@ onMounted(() => {
     </template>
   </el-autocomplete>
 
-    </div>
+    </div> -->
     <el-aside width="220px">
           <el-scrollbar>
             <el-menu
@@ -169,6 +173,7 @@ onMounted(() => {
         </el-menu> 
       </el-scrollbar>
         </el-aside>
+        <!-- 我的服务相关的底部导航 -->
         <!-- <div class="tips">
 
           <el-menu

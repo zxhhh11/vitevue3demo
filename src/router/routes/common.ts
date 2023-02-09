@@ -1,25 +1,25 @@
 // export default [
   
 // ];
+import Layout from '@/layout/index.vue'
 import type { RouteRecordRaw } from 'vue-router';
 export const Router: Array<RouteRecordRaw> = [
   {
     path: '/index',
-   
     name: 'index',
     meta: {
       title: '首页',
     },
-    component: () =>import(/* webpackChunkName: "index" */ '@/views/index.vue')
+    component: () =>import('@/views/index.vue')
   },
   {
     path: '/guestManagerMod',
     meta: {
       title: '要客客户经理使用模块',
     },
-
+    component: Layout,
     name: 'guestManagerMod',
-    redirect:'/guestManagerMod/inquireCustomerInfo',
+    // redirect:'/guestManagerMod/inquireCustomerInfo',
     children: [
       {
         path: '/guestManagerMod/inquireCustomerInfo',
@@ -28,8 +28,7 @@ export const Router: Array<RouteRecordRaw> = [
         meta: {
           title: '本人名下要客信息查询',
         },
-        component: () =>
-      import(/* webpackChunkName: "inquireCustomerInfo" */ '@/views/guestManagerMod/inquireCustomerInfo.vue')
+        component: () =>import('@/views/guestManagerMod/inquireCustomerInfo/index.vue')
       },
       {
         path: '/guestManagerMod/guestManagerModify',
@@ -37,8 +36,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '要客经理修改维护',
         },
         name: 'guestManagerModify',
-        component: () =>
-      import(/* webpackChunkName: "guestManagerModify" */ '@/views/guestManagerMod/guestManagerModify.vue')
+        component: () =>import('@/views/guestManagerMod/guestManagerModify/index.vue')
       }
     ]
   },
@@ -49,6 +47,7 @@ export const Router: Array<RouteRecordRaw> = [
     meta: {
       title: '要客报表',
     },
+    component: Layout,
     children: [
       {
         path: '/guestReport/guestStatSheet',
@@ -56,8 +55,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '要客客户统计表',
         },
         name: 'guestStatSheet',
-        component: () =>
-        import(/* webpackChunkName: "guestManagerModify" */ '@/views/guestReport/guestStatSheet.vue')
+        component: () =>import('@/views/guestReport/guestStatSheet/index.vue')
         }
       ,
       {
@@ -66,14 +64,13 @@ export const Router: Array<RouteRecordRaw> = [
           title: '要客明细统计表',
         },
         name: 'guestDetailStatSheet',
-        component: () =>
-        import(/* webpackChunkName: "guestManagerModify" */ '@/views/guestReport/guestDetailStatSheet.vue')
+        component: () =>import('@/views/guestReport/guestDetailStatSheet/index.vue')
         }
     ]
   },
   {
     path: '/queryFun',
-    
+    component: Layout,
     name: 'queryFun',
     meta: {
       title: '查询类功能',
@@ -85,8 +82,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '分行要客维护',
         },
         name: 'branchGuestMaint',
-        component: () =>
-        import(/* webpackChunkName: "branchGuestMaint" */ '@/views/queryFun/branchGuestMaint.vue')
+        component: () =>import('@/views/queryFun/branchGuestMaint.vue')
       },
       {
         path: '/queryFun/SMSHisyQuery',
@@ -95,8 +91,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '短信渠道历史查询',
         },
         name: 'SMSHisyQuery',
-        component: () =>
-        import(/* webpackChunkName: "SMSHisyQuery" */ '@/views/queryFun/SMSHisyQuery.vue')
+        component: () =>import('@/views/queryFun/SMSHisyQuery.vue')
       },
       {
         path: '/queryFun/personCardBill',
@@ -105,8 +100,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '个人卡合并账单查询',
         },
         name: 'personCardBill',
-        component: () =>
-        import(/* webpackChunkName: "personCardBill" */ '@/views/queryFun/personCardBill.vue')
+        component: () =>import('@/views/queryFun/personCardBill.vue')
       },
       {
         path: '/queryFun/customerRightsInfo',
@@ -115,8 +109,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '客户权益信息查询',
         },
         name: 'customerRightsInfo',
-        component: () =>
-        import(/* webpackChunkName: "customerRightsInfo" */ '@/views/queryFun/customerRightsInfo.vue')
+        component: () =>import('@/views/queryFun/customerRightsInfo.vue')
       },
       {
         path: '/queryFun/applyProgress',
@@ -125,8 +118,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '申请件进度查询',
         },
         name: 'applyProgress',
-        component: () =>
-        import(/* webpackChunkName: "applyProgress" */ '@/views/queryFun/applyProgress.vue')
+        component: () =>import('@/views/queryFun/applyProgress.vue')
       },
       {
         path: '/queryFun/creditCardLimit',
@@ -135,8 +127,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '信用卡额度查询',
         },
         name: 'creditCardLimit',
-        component: () =>
-        import(/* webpackChunkName: "guestManagerModify" */ '@/views/queryFun/creditCardLimit.vue')
+        component: () =>import('@/views/queryFun/creditCardLimit.vue')
       },
       {
         path: '/queryFun/creditCardTrans',
@@ -145,8 +136,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '信用卡交易查询',
         },
         name: 'creditCardTrans',
-        component: () =>
-        import(/* webpackChunkName: "creditCardTrans" */ '@/views/queryFun/creditCardTrans.vue')
+        component: () =>import('@/views/queryFun/creditCardTrans.vue')
       },
       {
         path: '/queryFun/creditCardBill',
@@ -155,8 +145,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '信用卡账单查询',
         },
         name: 'creditCardBill',
-        component: () =>
-        import(/* webpackChunkName: "creditCardBill" */ '@/views/queryFun/creditCardBill.vue')
+        component: () =>import('@/views/queryFun/creditCardBill.vue')
       },
       {
         path: '/queryFun/creditCardInfo',
@@ -165,8 +154,7 @@ export const Router: Array<RouteRecordRaw> = [
         meta: {
           title: '信用卡信息查询',
         },
-        component: () =>
-        import(/* webpackChunkName: "creditCardInfo" */ '@/views/queryFun/creditCardInfo.vue')
+        component: () =>import('@/views/queryFun/creditCardInfo.vue')
       },
       {
         path: '/queryFun/creditCardStatus',
@@ -175,8 +163,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '信用卡状态查询',
         },
         name: 'creditCardStatus',
-        component: () =>
-        import(/* webpackChunkName: "creditCardStatus" */ '@/views/queryFun/creditCardStatus.vue')
+        component: () =>import('@/views/queryFun/creditCardStatus.vue')
       },
       {
         path: '/queryFun/mainAttachedCard',
@@ -185,8 +172,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '主附卡关系查询',
         },
         name: 'mainAttachedCard',
-        component: () =>
-        import(/* webpackChunkName: "mainAttachedCard" */ '@/views/queryFun/mainAttachedCard.vue')
+        component: () =>import('@/views/queryFun/mainAttachedCard.vue')
       },
       {
         path: '/queryFun/annualFeeWaiver',
@@ -195,8 +181,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '年费减免查询',
         },
         name: 'annualFeeWaiver',
-        component: () =>
-        import(/* webpackChunkName: "annualFeeWaiver" */ '@/views/queryFun/annualFeeWaiver.vue')
+        component: () =>import('@/views/queryFun/annualFeeWaiver.vue')
       },
       {
         path: '/queryFun/accountStatus',
@@ -205,8 +190,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '账户状态查询',
         },
         name: 'accountStatus',
-        component: () =>
-        import(/* webpackChunkName: "accountStatus" */ '@/views/queryFun/accountStatus.vue')
+        component: () =>import('@/views/queryFun/accountStatus.vue')
       },
       {
         path: '/queryFun/officialCardInfo',
@@ -215,8 +199,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '公务卡信息查询',
         },
         name: 'officialCardInfo',
-        component: () =>
-        import(/* webpackChunkName: "officialCardInfo" */ '@/views/queryFun/officialCardInfo.vue')
+        component: () =>import('@/views/queryFun/officialCardInfo.vue')
       },
       {
         path: '/queryFun/cardReplaceHisy',
@@ -225,8 +208,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '换卡历史记录查询',
         },
         name: 'cardReplaceHisy',
-        component: () =>
-        import(/* webpackChunkName: "cardReplaceHisy" */ '@/views/queryFun/cardReplaceHisy.vue')
+        component: () =>import('@/views/queryFun/cardReplaceHisy.vue')
       },
       {
         path: '/queryFun/financialHisy',
@@ -235,8 +217,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '金融历史查询',
         },
         name: 'financialHisy',
-        component: () =>
-        import(/* webpackChunkName: "financialHisy" */ '@/views/queryFun/financialHisy.vue')
+        component: () =>import('@/views/queryFun/financialHisy.vue')
       },
       {
         path: '/queryFun/creditCardAuth',
@@ -245,8 +226,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '信用卡授权查询',
         },
         name: 'creditCardAuth',
-        component: () =>
-        import(/* webpackChunkName: "creditCardAuth" */ '@/views/queryFun/creditCardAuth.vue')
+        component: () =>import('@/views/queryFun/creditCardAuth.vue')
       },
     ]
   },
@@ -265,8 +245,7 @@ export const Router: Array<RouteRecordRaw> = [
       meta: {
         title: '交易短信通知触发金额',
       },
-      component: () =>
-    import(/* webpackChunkName: "tranSMSNotif" */ '@/views/OperatFun/tranSMSNotif.vue')
+      component: () =>import('@/views/OperatFun/tranSMSNotif/index.vue')
     },
     {
       path: '/OperatFun/installmentTradeAndReduce',
@@ -274,8 +253,7 @@ export const Router: Array<RouteRecordRaw> = [
         title: '分期交易提前结算并减免手续费',
       },
       name: 'installmentTradeAndReduce',
-      component: () =>
-    import(/* webpackChunkName: "installmentTradeAndReduce" */ '@/views/OperatFun/installmentTradeAndReduce.vue')
+      component: () =>import('@/views/OperatFun/installmentTradeAndReduce/index.vue')
     },
     {
       path: '/OperatFun/customerAndAccountFLAgjust',
@@ -283,8 +261,7 @@ export const Router: Array<RouteRecordRaw> = [
         title: '客户、账户五级分类批量调整申请',
       },
       name: 'customerAndAccountFLAgjust',
-      component: () =>
-    import(/* webpackChunkName: "guestDetailStatSheet" */ '@/views/OperatFun/customerAndAccountFLAgjust.vue')
+      component: () =>import('@/views/OperatFun/customerAndAccountFLAgjust/index.vue')
     }
   ]
 },
@@ -360,7 +337,7 @@ export const Router: Array<RouteRecordRaw> = [
   },
   name: 'filter',
   component: () =>
-  import(/* webpackChunkName: "filter" */ '@/views/filter.vue')
+  import(/* webpackChunkName: "filter" */ '@/views/filter/index.vue')
 },
 
 ]

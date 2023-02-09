@@ -7,7 +7,7 @@ import Header from '@/layout/header/index.vue'
 import { useRouter,useRoute } from "vue-router";
 import Customer from '@/layout/customer/index.vue'
 import AppMain from '@/layout/appMain/index.vue'
-
+import usePermissionStore from '@/stores/permission'
 const router = useRouter()
 const route = useRoute();
 const { watermark } = getmark();
@@ -58,6 +58,7 @@ const keyDown = () => {
   onMounted(() => {
   keyDown(); // 监听键盘
   watermark('李某某 2023-01-03',400,300);//水印名  后面两个参数用来控制水印密度
+  usePermissionStore().setFlag()
 });
   onUnmounted(() => {
     watermark('',400,300);

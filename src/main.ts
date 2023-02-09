@@ -10,16 +10,18 @@ import "./assets/main.css";
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 // import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import './assets/iconfont/iconfont.js';
+// import {init} from '@/router/index'
+// console.log(init,'init')
 const pinia = createPinia();
+// async function call() {
+//   await init()
+// }
 // pinia.use(piniaPluginPersistedstate);
 const app = createApp(App);
 app.config.errorHandler = (err, vm, info) => {
   console.log('[全局异常]', err, vm, info);
 };
 app.use(createPinia());
-// app.use(pinia)
-
-
 app.use(router);
 app.use(ElementPlus, {
     locale: zhCn,
@@ -27,4 +29,7 @@ app.use(ElementPlus, {
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)
 }
+// call()
 app.mount("#app");
+
+
