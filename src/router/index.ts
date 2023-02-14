@@ -3,15 +3,11 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import type { RouteRecordRaw } from 'vue-router';
 import usePermissionStore from '@/stores/permission'
-// import ErrorConfig from './error';
-// import type { FunctionalComponent } from 'vue';
-// import Home from '@/views/Home.vue';
 import NProgress from '@/utils/progress';
-// import RoutesMapConfig from './routes';
+// import RoutesMapConfig from './routes';  // 固定路由在routes文件配置（constantRoutes.concat(RoutesMapConfig)）  动态路由在用路由守卫中配置
 import Layout from '@/layout/index.vue';
 import { isHttp } from '@/utils/validate'
-// import { toRouteType } from './types';
-// console.log(usePermissionStore,'usePermissionStore')
+
 
 import axios from "axios";
 /**
@@ -30,7 +26,7 @@ import axios from "axios";
  * meta : {
     noCache: true                   // 如果设置为true，则不会被 <keep-alive> 缓存(默认 false)
     title: 'title'                  // 设置该路由在侧边栏和面包屑中展示的名字
-    icon: 'svg-name'                // 设置该路由的图标，对应路径src/assets/icons/svg
+    icon: 'svg-name'                // 设置该路由的图标 阿里图标库的项目文件夹中 symbol 形式
     breadcrumb: false               // 如果设置为false，则不会在breadcrumb面包屑中显示
     activeMenu: '/system/user'      // 当路由设置了该属性，则会高亮相对应的侧边栏。
   }
@@ -54,23 +50,6 @@ export let constantRoutes: Array<RoutesType> = [
     component: () => import('@/views/error/401.vue'),
     hidden: true
   },
-  // {
-  //   path: '/',
-  //   component: Layout,
-  //   redirect: '/index',
-  //   children: [
-  //     {
-  //       path: '/index',
-  //       component: () => import('@/views/index.vue'),
-  //       name: 'index',
-  //       meta: { title: '首页', icon: 'dashboard', affix: true }
-  //     }
-  //   ]
-  // },
-  // {
-  //   path: '/',
-  //   redirect: '/login',
-  // },
   {
     path: '/',
     component: Layout,
@@ -100,19 +79,7 @@ export let constantRoutes: Array<RoutesType> = [
   //       meta: { title: '查找', icon: 'dashboard', affix: true }
   //     }
   //   ]
-  // },
-  // {
-  //   path: '/guestManagerMod',
-  //   component: Layout,
-  //   children: [
-  //     {
-  //       path: '/inquireCustomerInfo',
-  //       component: () => import('@/views/guestManagerMod/inquireCustomerInfo/index.vue'),
-  //       name: 'inquireCustomerInfo',
-  //       meta: { title: '本人名下要客信息查询12', icon: 'dashboard', affix: true }
-  //     }
-  //   ]
-  // },
+  // }
 
 ];
 const errorPage = {

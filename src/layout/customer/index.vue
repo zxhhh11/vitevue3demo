@@ -22,11 +22,11 @@
 <script setup lang="ts">
 import { ref, reactive, toRefs, onBeforeMount, onMounted, watchEffect, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import useStore from '@/stores/index'
+import { useCommonStore } from '@/stores/common'
 import { storeToRefs } from 'pinia';
 const router = useRouter()
 const route = useRoute();
-const { commonStore } = useStore()
+const commonStore = useCommonStore()
 const { editableTabsVal } = storeToRefs(commonStore)
 const { chgEditableTabsVal } = commonStore
 const filterClick = () => {

@@ -82,7 +82,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '分行要客维护',
         },
         name: 'branchGuestMaint',
-        component: () => import('@/views/queryFun/branchGuestMaint.vue')
+        component: () => import('@/views/queryFun/branchGuestMaint/branchGuestMaint.vue')
       },
       {
         path: '/queryFun/SMSHisyQuery',
@@ -91,7 +91,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '短信渠道历史查询',
         },
         name: 'SMSHisyQuery',
-        component: () => import('@/views/queryFun/SMSHisyQuery.vue')
+        component: () => import('@/views/queryFun/branchGuestMaint/SMSHisyQuery/SMSHisyQuery.vue')
       },
       {
         path: '/queryFun/personCardBill',
@@ -100,7 +100,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '个人卡合并账单查询',
         },
         name: 'personCardBill',
-        component: () => import('@/views/queryFun/personCardBill.vue')
+        component: () => import('@/views/queryFun/personCardBill/personCardBill.vue')
       },
       {
         path: '/queryFun/customerRightsInfo',
@@ -109,7 +109,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '客户权益信息查询',
         },
         name: 'customerRightsInfo',
-        component: () => import('@/views/queryFun/customerRightsInfo.vue')
+        component: () => import('@/views/queryFun/customerRightsInfo/customerRightsInfo.vue')
       },
       {
         path: '/queryFun/applyProgress',
@@ -118,7 +118,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '申请件进度查询',
         },
         name: 'applyProgress',
-        component: () => import('@/views/queryFun/applyProgress.vue')
+        component: () => import('@/views/queryFun/applyProgress/applyProgress.vue')
       },
       {
         path: '/queryFun/creditCardLimit',
@@ -127,7 +127,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '信用卡额度查询',
         },
         name: 'creditCardLimit',
-        component: () => import('@/views/queryFun/creditCardLimit.vue')
+        component: () => import('@/views/queryFun/creditCardLimit/creditCardLimit.vue')
       },
       {
         path: '/queryFun/creditCardTrans',
@@ -136,7 +136,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '信用卡交易查询',
         },
         name: 'creditCardTrans',
-        component: () => import('@/views/queryFun/creditCardTrans.vue')
+        component: () => import('@/views/queryFun/creditCardTrans/creditCardTrans.vue')
       },
       {
         path: '/queryFun/creditCardBill',
@@ -145,7 +145,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '信用卡账单查询',
         },
         name: 'creditCardBill',
-        component: () => import('@/views/queryFun/creditCardBill.vue')
+        component: () => import('@/views/queryFun/creditCardBill/creditCardBill.vue')
       },
       {
         path: '/queryFun/creditCardInfo',
@@ -154,7 +154,7 @@ export const Router: Array<RouteRecordRaw> = [
         meta: {
           title: '信用卡信息查询',
         },
-        component: () => import('@/views/queryFun/creditCardInfo.vue')
+        component: () => import('@/views/queryFun/creditCardInfo/creditCardInfo.vue')
       },
       {
         path: '/queryFun/creditCardStatus',
@@ -190,7 +190,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '账户状态查询',
         },
         name: 'accountStatus',
-        component: () => import('@/views/queryFun/accountStatus.vue')
+        component: () => import('@/views/queryFun/accountStatus/accountStatus.vue')
       },
       {
         path: '/queryFun/officialCardInfo',

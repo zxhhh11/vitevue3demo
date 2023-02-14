@@ -38,10 +38,10 @@ import myService from "@/views/service/myService.vue";
 import branchTranFlow from '@/views/service/branchTranFlow.vue'
 import TagModule2 from '@/components/common/TagModule2.vue'
 
-import useStore from '@/stores/index'
+import { useCommonStore } from '@/stores/common'
 import { storeToRefs } from 'pinia';
 
-const { commonStore } = useStore()
+const commonStore = useCommonStore()
 const { editableTabsVal } = storeToRefs(commonStore)
 const { chgEditableTabsVal } = commonStore
 // import type { TabsPaneContext } from 'element-plus'

@@ -82,5 +82,11 @@ watchEffect(() => {
 
 </script>
 <style scoped>
+.el-menu>div>li.el-menu-item {
+  padding-left: 4px;
+}
 
+.el-menu .el-sub-menu li.el-menu-item {
+  padding-left: 10px;
+}
 </style>

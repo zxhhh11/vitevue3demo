@@ -45,7 +45,7 @@
 import axios from 'axios';
 import { ref, reactive, toRefs, onBeforeMount, onMounted, watchEffect, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import useStore from '@/stores/index'
+import { useUserStore } from '@/stores/user'
 import { storeToRefs } from 'pinia';
 import { customerInfoData } from '@/utils/data';
 import CustomList from '@/components/common/customList/index.vue';
@@ -58,7 +58,7 @@ let state = ref({
 const currentPage = ref(1)
 const loginStatus = ref('')
 const tokenTest = ref('')
-const { counterStore, userStore } = useStore()
+const userStore = useUserStore()
 const { user, customer } = storeToRefs(userStore)
 const { changeUser } = userStore
 const customerInfo = [

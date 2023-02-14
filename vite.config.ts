@@ -1,5 +1,5 @@
 import { fileURLToPath, URL } from "node:url";
-import { resolve} from 'path'
+import { resolve } from 'path'
 // import { createHash } from 'crypto'
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
@@ -28,7 +28,7 @@ export default defineConfig({
   //   }
   // },
   plugins: [
-    vue(), 
+    vue(),
     vueJsx(),
     viteMockServe({
       mockPath: "./src/mock", // 解析，路径可根据实际变动
@@ -36,9 +36,23 @@ export default defineConfig({
     })],
   resolve: {
     alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
+      "@": fileURLToPath(new URL("./src", import.meta.url)),  //配置路径别名
     },
     extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json']
+  },
+  // 强制预构建插件包
+  optimizeDeps: {
+    include: ['axios'],
+  },
+  build: {
+    outDir: 'deploy/dist',
+    rollupOptions: {
+      output: {
+        chunkFileNames: 'static/js/[name]-[hash].js',
+        entryFileNames: 'static/js/[name]-[hash].js',
+        assetFileNames: 'static/[ext]/[name]-[hash].[ext]',
+      }
+    }
   },
   // 构建 此方法不推荐 打包后样式页面会出现问题  需要再调整
   // build: {
@@ -81,7 +95,7 @@ export default defineConfig({
   base: './',
   //  server: {
   //   port:9855,
-  //   open:true,
+  //   open:true, // 在服务器启动时自动在浏览器中打开应用程序
   //   proxy: {
   //     // '/login': {
   //     //   target: 'http://172.20.10.2:9855',
@@ -99,7 +113,7 @@ export default defineConfig({
   //     '/api': {
   //       target: 'http://172.20.10.2:9855',
   //       changeOrigin: true,
-  //       rewrite:path => path.replace(/^\/api/, '')
+  //       rewrite:path => path.replace(/^\/api/, '')  //反向代理配置，注意rewrite写法，开始没看文档在这里踩了坑
   //     }
   //   },
   //   headers: {
