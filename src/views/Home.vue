@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { getmark } from "@/utils/watermark";
-import {onMounted,onUnmounted,watch,ref, shallowRef} from 'vue'
-import type {Ref} from 'vue'
+import { onMounted, onUnmounted, watch, ref, shallowRef } from 'vue'
+import type { Ref } from 'vue'
 import SideBar from '@/components/common/SideBar.vue'
 import Header from '@/components/common/Header.vue'
-import { useRouter,useRoute } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 import branchTranFlow from '@/views/service/branchTranFlow.vue'
 import TagModule2 from '@/components/common/TagModule2.vue'
 import customerInfo from "./service/customerInfo.vue";
@@ -14,21 +14,21 @@ import interCardTranFlow from "./service/interCardTranFlow.vue";
 import myService from "./service/myService.vue";
 const router = useRouter()
 const route = useRoute();
-const filterClick =()=>{
-  if(editableTabsValue.value!=='6'){
+const filterClick = () => {
+  if (editableTabsValue.value !== '6') {
     editableTabsValue.value = '6'
   }
   router.push('/filter')
- 
+
 }
 const { watermark } = getmark();
-    // onMounted(() => {
-    //   watermark('WaterMark',400,300);//水印名  后面两个参数用来控制水印密度
-    // });
-    // onUnmounted(() => {
-    //   watermark('');
-    // });
-    const handleKeyDown = (e: any) => {
+// onMounted(() => {
+//   watermark('WaterMark',400,300);//水印名  后面两个参数用来控制水印密度
+// });
+// onUnmounted(() => {
+//   watermark('');
+// });
+const handleKeyDown = (e: any) => {
   if (e.keyCode === 122) {
     e.preventDefault(); // 阻止默认事件
     e.stopPropagation(); // 阻止冒泡事件
@@ -42,35 +42,35 @@ const { watermark } = getmark();
 };
 window.addEventListener('keydown', handleKeyDown, true);
 const keyDown = () => {
-    document.onkeydown = (e) => {
-      // console.log(e, 'e  key down in document');
-      //事件对象兼容
-      // let e1 = e || window.event || arguments.callee.caller.arguments[0]
-      let e1 = e || window.event;
-      let key = Number(e1.keyCode);
-      if ((e1 && key > 47 && key < 58) || (key > 64 && key < 91)) {
-        const inputs:any = document.getElementsByTagName('input');
-        const textAreas:any = document.getElementsByTagName('textarea');
-        let allIpts = [...inputs, ...textAreas];
-        let isFocusFlag = false;
-        for (let i = 0; i < allIpts.length; i++) {
-          if (allIpts[i] == document.activeElement) {
-            isFocusFlag = true;
-            break;
-          }
-        }
-        if (!isFocusFlag) {
-          document.getElementById('quickSearch')?.focus();
+  document.onkeydown = (e) => {
+    // console.log(e, 'e  key down in document');
+    //事件对象兼容
+    // let e1 = e || window.event || arguments.callee.caller.arguments[0]
+    let e1 = e || window.event;
+    let key = Number(e1.keyCode);
+    if ((e1 && key > 47 && key < 58) || (key > 64 && key < 91)) {
+      const inputs: any = document.getElementsByTagName('input');
+      const textAreas: any = document.getElementsByTagName('textarea');
+      let allIpts = [...inputs, ...textAreas];
+      let isFocusFlag = false;
+      for (let i = 0; i < allIpts.length; i++) {
+        if (allIpts[i] == document.activeElement) {
+          isFocusFlag = true;
+          break;
         }
       }
-    };
-  }
-  onMounted(() => {
+      if (!isFocusFlag) {
+        document.getElementById('quickSearch')?.focus();
+      }
+    }
+  };
+}
+onMounted(() => {
   keyDown(); // 监听键盘
-  watermark('李某某 2023-01-03',400,300);//水印名  后面两个参数用来控制水印密度
+  watermark('李某某 2023-01-03', 400, 300);//水印名  后面两个参数用来控制水印密度
 });
-  onUnmounted(() => {
-    watermark('',400,300);
+onUnmounted(() => {
+  watermark('', 400, 300);
   window.removeEventListener('keydown', handleKeyDown, true);
 });
 const editableTabsValue = ref('6');
@@ -81,8 +81,8 @@ interface TabItemType {
   closable: boolean;
 }
 // Ref<TabItemType[]>
-const editableTabs:any = ref([
- 
+const editableTabs: any = ref([
+
   {
     title: '客户信息',
     name: '0',
@@ -125,7 +125,7 @@ const editableTabs:any = ref([
     content: shallowRef(TagModule2),
     closable: false
   }
- 
+
 ]);
 watch(
   route, //这里必须传入要用watch 观察的参数
@@ -135,16 +135,16 @@ watch(
       to,
       ' towatch effect state.num',
       editableTabsValue,
-      'editableTabsValue',to.meta.title
+      'editableTabsValue', to.meta.title
     );
     if (typeof to.meta.title === 'string') {
       editableTabs.value[6].title = to.meta.title;
     }
-    let arr = ['客户信息','分行端服务流水','总行端服务历史(400)','国际卡上收前交易流水','非柜员交易流水查询','我的服务']
-    let title:any= to.meta.title;
-    if(!arr.includes(title)){
+    let arr = ['客户信息', '分行端服务流水', '总行端服务历史(400)', '国际卡上收前交易流水', '非柜员交易流水查询', '我的服务']
+    let title: any = to.meta.title;
+    if (!arr.includes(title)) {
       editableTabsValue.value = '6';
-     }
+    }
     // if (editableTabsValue.value === '7' && to.fullPath !== '/login') {
     //   console.log(editableTabsValue,'editableTabsValue')
     //  
@@ -154,54 +154,35 @@ watch(
 </script>
 
 <template>
-   
-   <div class="common-layout">
+  <div class="common-layout">
     <el-container class="box">
-     <Header></Header>
+      <Header></Header>
       <el-container>
-       <SideBar></SideBar>
+        <SideBar></SideBar>
         <el-main>
           <div class="customer-box">
             <div>
-              <el-descriptions  class="customer-info"  :column="4" border>
-                <el-descriptions-item
-                  label="客户姓名："
-                  label-align="right"
-                  align="center"
-                  label-class-name="my-label"
-                  class-name="my-content"
-                  width="150px"
-                  >赵某某 
+              <el-descriptions class="customer-info" :column="4" border>
+                <el-descriptions-item label="客户姓名：" label-align="right" align="center" label-class-name="my-label"
+                  class-name="my-content" width="150px">赵某某
                   <span class="filter-icon" @click="filterClick">
                     <svg class="icon" aria-hidden="true">
-                        <use xlink:href="#icon-100"></use>
-                      </svg>
+                      <use xlink:href="#icon-100"></use>
+                    </svg>
                   </span>
-                </el-descriptions-item
-                >
-                <el-descriptions-item label="证件号码：" label-align="right" align="center"
-                  >235546541655498</el-descriptions-item
-                >
-                <el-descriptions-item label="卡号：" label-align="right" align="center"
-                  >623548951236656666</el-descriptions-item
-                >
+                </el-descriptions-item>
+                <el-descriptions-item label="证件号码：" label-align="right"
+                  align="center">235546541655498</el-descriptions-item>
+                <el-descriptions-item label="卡号：" label-align="right"
+                  align="center">623548951236656666</el-descriptions-item>
                 <el-descriptions-item label="客户号：" label-align="right" align="center">
                   <el-tag size="small">5652321</el-tag>
                 </el-descriptions-item>
-              
+
               </el-descriptions>
-              <el-tabs
-                v-model="editableTabsValue"
-                type="card"
-                class="demo-tabs right-tabs"
-              >
-                <el-tab-pane
-                  v-for="item in editableTabs"
-                  :key="item.name"
-                  :label="(item.title as string)"
-                  :name="item.name"
-                  :closable="item.closable"
-                >
+              <el-tabs v-model="editableTabsValue" type="card" class="demo-tabs right-tabs">
+                <el-tab-pane v-for="item in editableTabs" :key="item.name" :label="(item.title as string)"
+                  :name="item.name" :closable="item.closable">
                   <!-- <router-view class="main_view" v-slot="{ Component }"> -->
                   <!-- <transition name="fade-transform" mode="out-in"> -->
                   <!-- <component :is="Component" /> -->
@@ -211,22 +192,20 @@ watch(
                   <!-- </transition> -->
                 </el-tab-pane>
               </el-tabs>
-          <!-- <RouterView /> -->
+              <!-- <RouterView /> -->
+            </div>
           </div>
-        </div>
-       
-      </el-main>
-    
+
+        </el-main>
+
       </el-container>
-      <el-footer>中国银行版权所有&copy;2011</el-footer>
+      <el-footer>中国银行版权所有&copy;2011 ddddd</el-footer>
     </el-container>
   </div>
- 
-
 </template>
 
 <style>
-.filter-icon{
+.filter-icon {
   cursor: pointer;
   font-size: 28px;
   vertical-align: middle;
@@ -234,10 +213,11 @@ watch(
   color: #2eafe9;
 }
 
-.filter-icon:hover{
+.filter-icon:hover {
   color: #0779ad;
 }
-.customer-info{
+
+.customer-info {
   margin-bottom: 10px;
 }
 </style>
