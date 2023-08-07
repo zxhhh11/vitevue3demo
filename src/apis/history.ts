@@ -1,26 +1,24 @@
-// import QS from 'qs';
 
 import ajax from '@/utils/ajax';
-import axios from 'axios';
 
 // const serverPre = ajax.serverUrlMock;
 const serverPre = ajax.serverUrl;
 const serverName = '/ccai';
-//ccai/202010
+//ccai/202010  接口调用测试   下面注释的接口都是因为get 方法传递参数有些报错 所以后面改成POST就可以使用了
 // 页面模板列表查询
 export type ParamsType = {
   [key: string]: any;
 };
-export async function getHistoryListAPI(params: ParamsType) {
+export async function getHistoryListAPI(params: Record<string, string>) {  //params:ParamsType
   return ajax.get(serverPre(`${serverName}/list`), params);
 }
 // export async function getFinancialListAPI(params: any) {
 //   return ajax.get(serverPre(`${serverName}/financial/list`), params);
 // }
-export async function getFinancialListAPI(params: ParamsType) {
+export async function getFinancialListAPI(params: Record<string, string>) {
   return ajax.post(serverPre(`${serverName}/202023`), params);
 }
-export async function setSTLTYPE(params: ParamsType) {
+export async function setSTLTYPE(params: Record<string, string>) {
   return ajax.post(serverPre(`${serverName}/201036`), params);
 }
 // export async function getTranListAPI(params: any) {
@@ -33,7 +31,7 @@ export async function setSTLTYPE(params: ParamsType) {
 //     'Access-Control-Allow-Origin': '*'
 //   }
 // };
-export async function getTranListAPI(params: ParamsType) {
+export async function getTranListAPI(params: Record<string, string>) {
   // console.log(serverPre(`/ccai/202010`), 'serverPre');
   return ajax.post(serverPre(`${serverName}/202010`), params);
   // return axios.get(serverPre(`/ccai/202010`), {

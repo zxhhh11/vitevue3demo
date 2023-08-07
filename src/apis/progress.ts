@@ -8,6 +8,6 @@ const serverName = '/ccai';
 export type ParamsType = {
   [key: string]: any;
 };
-export async function getProgressListAPI(params: ParamsType) {
+export async function getProgressListAPI(params: Record<string, string>) {
   return ajax.get(serverPre(`${serverName}/progress`), params);
 }

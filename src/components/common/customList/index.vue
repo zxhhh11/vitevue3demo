@@ -2,8 +2,7 @@
 <template>
   <div>
     <div class="custom-list" v-for="(data, index) in datas" :key="index">
-      <el-descriptions :title="title" :class="customClass" :column="column" size="small" :labelStyle="labelStyle"
-        border>
+      <el-descriptions :title="title" :class="customClass" :column="column" size="small" :labelStyle="labelStyle" border>
         <!-- 这里有跨组件传递slot的demo grandFather->parent-child   parent-->
         <template #extra>
           <slot name="extra"></slot>
@@ -23,12 +22,12 @@
             </template>
             <template v-else> {{ data[item.value] }}</template>
           </el-descriptions-item>
-          <!-- <el-descriptions-item
+        <!-- <el-descriptions-item
             v-else
             :span="item.span ? item.span : span"
             :label-class-name="labelClassName"
           >
-          </el-descriptions-item> -->
+                </el-descriptions-item> -->
         </template>
         <slot name="addItem"></slot>
         <!-- slot name = addItem 用来添加一些特殊的自定义内容 -->
@@ -57,7 +56,8 @@ const props = defineProps({
     type: Array as PropType<ListType[]>, // 用来配置使type支持typescript类型验证
     required: true
   },
-  datas: Array as PropType<DataType[]>, //由于data 我们不确定key都有什么，所以为了解决ts 检查
+  // datas: Array as PropType<DataType[]>, //由于data 我们不确定key都有什么，所以为了解决ts 检查
+  datas: Array as PropType<Record<string, string>[]>, // Record<string, string> 可以替代 DataType 
   title: String,
   labelStyle: {
     //这里如果需要定义则遵照这个 labelStyle: Object as PropType<ListType> 形式

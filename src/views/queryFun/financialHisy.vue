@@ -1,5 +1,5 @@
 <template>
-  <div>financialHisy</div>
+    <div>financial</div>
 </template>
 
 <script setup lang="ts">
@@ -19,19 +19,21 @@ const router = useRouter();
 */
 const data = reactive({})
 onBeforeMount(() => {
-  //console.log('2.组件挂载页面之前执行----onBeforeMount')
+    //console.log('2.组件挂载页面之前执行----onBeforeMount')
 })
 onMounted(() => {
-  //console.log('3.-组件挂载到页面之后执行-------onMounted')
+    //console.log('3.-组件挂载到页面之后执行-------onMounted')
 })
-watchEffect(()=>{
+watchEffect(() => {
 })
 // 使用toRefs解构
 // let { } = { ...toRefs(data) } 
+//defineExpose 一般用于将当前组件内的方法参数暴露给父组件 所以views 中的页面组件一般不需要这个方法
 defineExpose({
-  ...toRefs(data)
+    ...toRefs(data)
 })
 
 </script>
 <style scoped>
+
 </style>

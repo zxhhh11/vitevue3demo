@@ -10,14 +10,14 @@
           </span>
         </template>
         <div>
-          <CustomList :list="customerInfoList" :column="4" :datas="customerInfoDatas">
+          <CustomList :list="customerInfoList" :column="4" :datas="CUSTOMERLISTS">
           </CustomList>
 
         </div>
       </el-tab-pane>
 
     </el-tabs>
-    <el-tabs type="border-card">
+    <el-tabs type="border-card" v-if="CUSTOMERLISTS.length === 1">
       <el-tab-pane>
         <template #label>
           <span class="custom-tabs-label">
@@ -33,7 +33,7 @@
       </el-tab-pane>
 
     </el-tabs>
-    <el-tabs type="border-card">
+    <el-tabs type="border-card" v-if="CUSTOMERLISTS.length === 1">
       <el-tab-pane>
         <template #label>
           <span class="custom-tabs-label">
@@ -110,7 +110,10 @@ import {
 import CustomList from '@/components/common/customList/index.vue'
 import BaseTable from '@/components/common/baseTable/index.vue';
 import BaseModal from '@/components/common/modal/index.vue'
-
+import { useCustomerStore } from '@/stores/customer';
+import { storeToRefs } from 'pinia';
+const customerStote = useCustomerStore()
+const { CUSTOMERLISTS } = storeToRefs(customerStote)
 const cardVisiable = ref(false)
 const customerDetailVisiable = ref(false)
 const accoutDetailVisiable = ref(false)

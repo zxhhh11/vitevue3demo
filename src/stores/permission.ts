@@ -17,6 +17,9 @@ const usePermissionStore = defineStore("permission", {
     sidebarRouters: [],
     isFlag: false  // 临时的 后续应该用其它参数来代表判断用户权限
   }),
+  // persist: {
+  //   storage: sessionStorage,
+  // },
   actions: {
     setRoutes(routes: any) {
       this.addRoutes = routes
@@ -37,7 +40,7 @@ const usePermissionStore = defineStore("permission", {
     //       })
     // },
     generateRoutes(roles: any = '') {
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         // 向后端请求路由数据
         getRouters().then(res => {
 
@@ -56,11 +59,15 @@ const usePermissionStore = defineStore("permission", {
           // this.setDefaultRoutes(sidebarRoutes)
           // this.setTopbarRoutes(defaultRoutes)
           resolve(rewriteRoutes)
+        }).catch(error => {
+          console.log(error)
+          reject()
         })
       })
     }
   }
-});
+},
+);
 export default usePermissionStore
 
 

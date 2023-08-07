@@ -5,12 +5,16 @@
         <div>
           <CustomList :list="creditCardList" :column="2" :datas="creditCardDatas">
             <template #addItem>
-              <el-descriptions-item :span="2" label="申请人备注" v-model="ApplicantRemarks">
+              <el-descriptions-item :span="2" label="申请人备注">
+                <el-input v-model="ApplicantRemarks"></el-input>
+              </el-descriptions-item>
+              <!-- <el-descriptions-item label="申请人备注" :index="98">
                 <el-input type="textarea" v-model="ApplicantRemarks"></el-input>
               </el-descriptions-item>
-              <el-descriptions-item :span="2" label="复核人备注">
-                <el-input type="textarea" v-model="reviewRemarks"></el-input>
-              </el-descriptions-item>
+              <el-descriptions-item label="复核人备注" :index="97">
+                <el-input type="textarea" v-model="reviewRemarks" :style="{ width: '300px' }">
+                </el-input>
+              </el-descriptions-item> -->
               <el-descriptions-item :span="2" label="">
                 <el-button type="success">通过并执行</el-button>
                 <el-button color="#626aef">重新提交</el-button>
@@ -29,11 +33,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, toRefs, onBeforeMount, onMounted, watchEffect, computed } from 'vue';
+import { ref, reactive, onBeforeMount, onMounted, watchEffect } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import CustomList from '@/components/common/customList/index.vue';
 import { creditCardDatas, creditCardList } from '@/utils/data'
-import { customerInfoData } from '@/utils/data';
+console.log(creditCardDatas, 'creditCardDatas')
 const ApplicantRemarks = ref('')
 const reviewRemarks = ref('')
 /**

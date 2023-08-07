@@ -2,12 +2,16 @@
   "compilerOptions": {
     "target": "ES6",
     "lib": [
-        "DOM",
-        "DOM.Iterable",
-        "ES6"
+      "DOM",
+      "DOM.Iterable",
+      "ES6"
     ],
-    "strict": false,
-    "importsNotUsedAsValues": "remove"
+    "jsx": "preserve", //支持 JSX 
+    "strict": false, // true 则开启所有严格的类型检查
+    "removeComments": true, // 删除注释 
+    "noImplicitAny": false, //在表达式和声明上有隐含的 any类型时报错
+    "importsNotUsedAsValues": "remove",
+    "skipLibCheck": true, //跳过库检查
   },
   "files": [],
   "references": [

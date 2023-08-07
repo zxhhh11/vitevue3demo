@@ -8,7 +8,7 @@
 import { ref } from "vue";
 import { setVerify } from '@/hooks/verify.js'
 export default {
-  setup(props: any, con: any) {
+  setup() {
     const verify = ref(null);
     return {
       ...setVerify(verify)

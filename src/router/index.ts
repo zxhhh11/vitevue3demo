@@ -4,12 +4,10 @@ import { createRouter, createWebHistory } from 'vue-router';
 import type { RouteRecordRaw } from 'vue-router';
 import usePermissionStore from '@/stores/permission'
 import NProgress from '@/utils/progress';
-// import RoutesMapConfig from './routes';  // 固定路由在routes文件配置（constantRoutes.concat(RoutesMapConfig)）  动态路由在用路由守卫中配置
+import RoutesMapConfig from './routes';  // 固定路由在routes文件配置（constantRoutes.concat(RoutesMapConfig)）  动态路由在用路由守卫中配置
 import Layout from '@/layout/index.vue';
 import { isHttp } from '@/utils/validate'
 
-
-import axios from "axios";
 /**
  * Note: 路由配置项
  *
@@ -91,7 +89,7 @@ const errorPage = {
 
 const router = createRouter({
   history: createWebHistory(),
-  routes: constantRoutes,
+  routes: constantRoutes,//.concat(RoutesMapConfig)
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition
@@ -130,13 +128,14 @@ const whiteList = ['/login', '/auth-redirect', '/bind', '/register'];
 router.beforeEach(async (to, from, next) => {
   NProgress.start();
   if (token) {
+    // next()
     if (!usePermissionStore().isFlag) {
       if (hasRoles) {
         //  init()
         await usePermissionStore().generateRoutes()
-
         let arr = usePermissionStore().addRoutes
-        console.log(arr)
+        // let arr = RoutesMapConfig
+
         arr.forEach(r => {
           router.addRoute(r) // 动态添加可访问路由表
         })

@@ -5,7 +5,7 @@ const editPwdServerName = '/auth-management/user';
 export type ParamsType = {
   [key: string]: any;
 };
-export async function handleLogin(data: ParamsType) {
+export async function handleLogin(data: Record<string, string>) {
   return ajax.post(serverPre(`${serverName}/jwt/login`), data);
 }
 
@@ -17,7 +17,7 @@ export async function logout() {
   return ajax.get(serverPre(`${serverName}/jwt/logout`));
 }
 
-export async function editPassword(data: ParamsType) {
+export async function editPassword(data: Record<string, string>) {
   return ajax.post(serverPre(`${editPwdServerName}/password/updatePwd`), data);
 }
 

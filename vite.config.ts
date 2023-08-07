@@ -9,24 +9,7 @@ import { viteMockServe } from 'vite-plugin-mock'
 // import { viteMockServe } from 'vite-plugin-mock'
 // https://vitejs.dev/config/
 export default defineConfig({
-  // build: {  //配置hash解决增量更新的问题 不行
-  //   rollupOptions: {
-  //     output: {
-  //       entryFileNames: 'assets/[name].js',
-  //       chunkFileNames: chunkInfo => {
-  //         if (chunkInfo.isDynamicEntry) {
-  //           const hash = createHash('md5')
-  //             .update(Object.values(chunkInfo.modules).map(m => m.code).join())
-  //             .digest('hex')
-  //             .substr(0, 6)
-  //           return 'assets/[name].' + hash + '.js'
-  //         } else {
-  //           return 'assets/[name].[hash].js'
-  //         }
-  //       }
-  //     }
-  //   }
-  // },
+  base: './',
   plugins: [
     vue(),
     vueJsx(),
@@ -44,29 +27,17 @@ export default defineConfig({
   optimizeDeps: {
     include: ['axios'],
   },
-  build: {
-    outDir: 'deploy/dist',
-    rollupOptions: {
-      output: {
-        chunkFileNames: 'static/js/[name]-[hash].js',
-        entryFileNames: 'static/js/[name]-[hash].js',
-        assetFileNames: 'static/[ext]/[name]-[hash].[ext]',
-      }
-    }
-  },
-  // 构建 此方法不推荐 打包后样式页面会出现问题  需要再调整
   // build: {
-  //   chunkSizeWarningLimit:1500,
+  //   outDir: 'deploy/dist',
   //   rollupOptions: {
-  //       output:{
-  //           manualChunks(id) {
-  //               if (id.includes('node_modules')) {
-  //                   return id.toString().split('node_modules/')[1].split('/')[0].toString();
-  //               }
-  //           }
-  //       }
+  //     output: {
+  //       chunkFileNames: 'static/js/[name]-[hash].js',
+  //       entryFileNames: 'static/js/[name]-[hash].js',
+  //       assetFileNames: 'static/[ext]/[name]-[hash].[ext]',
+  //     }
   //   }
   // },
+
   //  //  构建
   //  build: {
   //   outDir: 'dist', //指定打包输出路径
@@ -92,7 +63,7 @@ export default defineConfig({
   //     }
   //   }
   // },
-  base: './',
+
   //  server: {
   //   port:9855,
   //   open:true, // 在服务器启动时自动在浏览器中打开应用程序

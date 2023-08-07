@@ -13,6 +13,14 @@ export const Router: Array<RouteRecordRaw> = [
     component: () => import('@/views/index.vue')
   },
   {
+    path: '/index2',
+    name: 'index2',
+    meta: {
+      title: '首页2',
+    },
+    component: () => import('@/views/guestManagerMod/inquireCustomerInfo.vue')
+  },
+  {
     path: '/guestManagerMod',
     meta: {
       title: '要客客户经理使用模块',
@@ -28,7 +36,7 @@ export const Router: Array<RouteRecordRaw> = [
         meta: {
           title: '本人名下要客信息查询',
         },
-        component: () => import('@/views/guestManagerMod/inquireCustomerInfo/index.vue')
+        component: () => import('@/views/guestManagerMod/inquireCustomerInfo.vue')
       },
       {
         path: '/guestManagerMod/guestManagerModify',
@@ -36,7 +44,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '要客经理修改维护',
         },
         name: 'guestManagerModify',
-        component: () => import('@/views/guestManagerMod/guestManagerModify/index.vue')
+        component: () => import('@/views/guestManagerMod/guestManagerModify.vue')
       }
     ]
   },
@@ -55,7 +63,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '要客客户统计表',
         },
         name: 'guestStatSheet',
-        component: () => import('@/views/guestReport/guestStatSheet/index.vue')
+        component: () => import('@/views/guestReport/guestStatSheet.vue')
       }
       ,
       {
@@ -64,7 +72,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '要客明细统计表',
         },
         name: 'guestDetailStatSheet',
-        component: () => import('@/views/guestReport/guestDetailStatSheet/index.vue')
+        component: () => import('@/views/guestReport/guestDetailStatSheet.vue')
       }
     ]
   },
@@ -82,7 +90,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '分行要客维护',
         },
         name: 'branchGuestMaint',
-        component: () => import('@/views/queryFun/branchGuestMaint/branchGuestMaint.vue')
+        component: () => import('@/views/queryFun/branchGuestMaint.vue')
       },
       {
         path: '/queryFun/SMSHisyQuery',
@@ -91,7 +99,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '短信渠道历史查询',
         },
         name: 'SMSHisyQuery',
-        component: () => import('@/views/queryFun/branchGuestMaint/SMSHisyQuery/SMSHisyQuery.vue')
+        component: () => import('@/views/queryFun/SMSHisyQuery.vue')
       },
       {
         path: '/queryFun/personCardBill',
@@ -100,7 +108,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '个人卡合并账单查询',
         },
         name: 'personCardBill',
-        component: () => import('@/views/queryFun/personCardBill/personCardBill.vue')
+        component: () => import('@/views/queryFun/personCardBill.vue')
       },
       {
         path: '/queryFun/customerRightsInfo',
@@ -109,7 +117,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '客户权益信息查询',
         },
         name: 'customerRightsInfo',
-        component: () => import('@/views/queryFun/customerRightsInfo/customerRightsInfo.vue')
+        component: () => import('@/views/queryFun/customerRightsInfo.vue')
       },
       {
         path: '/queryFun/applyProgress',
@@ -118,7 +126,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '申请件进度查询',
         },
         name: 'applyProgress',
-        component: () => import('@/views/queryFun/applyProgress/applyProgress.vue')
+        component: () => import('@/views/queryFun/applyProgress.vue')
       },
       {
         path: '/queryFun/creditCardLimit',
@@ -127,7 +135,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '信用卡额度查询',
         },
         name: 'creditCardLimit',
-        component: () => import('@/views/queryFun/creditCardLimit/creditCardLimit.vue')
+        component: () => import('@/views/queryFun/creditCardLimit.vue')
       },
       {
         path: '/queryFun/creditCardTrans',
@@ -136,7 +144,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '信用卡交易查询',
         },
         name: 'creditCardTrans',
-        component: () => import('@/views/queryFun/creditCardTrans/creditCardTrans.vue')
+        component: () => import('@/views/queryFun/creditCardTrans.vue')
       },
       {
         path: '/queryFun/creditCardBill',
@@ -145,7 +153,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '信用卡账单查询',
         },
         name: 'creditCardBill',
-        component: () => import('@/views/queryFun/creditCardBill/creditCardBill.vue')
+        component: () => import('@/views/queryFun/creditCardBill.vue')
       },
       {
         path: '/queryFun/creditCardInfo',
@@ -154,7 +162,7 @@ export const Router: Array<RouteRecordRaw> = [
         meta: {
           title: '信用卡信息查询',
         },
-        component: () => import('@/views/queryFun/creditCardInfo/creditCardInfo.vue')
+        component: () => import('@/views/queryFun/creditCardInfo.vue')
       },
       {
         path: '/queryFun/creditCardStatus',
@@ -190,7 +198,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '账户状态查询',
         },
         name: 'accountStatus',
-        component: () => import('@/views/queryFun/accountStatus/accountStatus.vue')
+        component: () => import('@/views/queryFun/accountStatus.vue')
       },
       {
         path: '/queryFun/officialCardInfo',
@@ -245,7 +253,7 @@ export const Router: Array<RouteRecordRaw> = [
         meta: {
           title: '交易短信通知触发金额',
         },
-        component: () => import('@/views/OperatFun/tranSMSNotif/index.vue')
+        component: () => import('@/views/OperatFun/tranSMSNotif.vue')
       },
       {
         path: '/OperatFun/installmentTradeAndReduce',
@@ -253,7 +261,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '分期交易提前结算并减免手续费',
         },
         name: 'installmentTradeAndReduce',
-        component: () => import('@/views/OperatFun/installmentTradeAndReduce/index.vue')
+        component: () => import('@/views/OperatFun/installmentTradeAndReduce.vue')
       },
       {
         path: '/OperatFun/customerAndAccountFLAgjust',
@@ -261,7 +269,7 @@ export const Router: Array<RouteRecordRaw> = [
           title: '客户、账户五级分类批量调整申请',
         },
         name: 'customerAndAccountFLAgjust',
-        component: () => import('@/views/OperatFun/customerAndAccountFLAgjust/index.vue')
+        component: () => import('@/views/OperatFun/customerAndAccountFLAgjust.vue')
       }
     ]
   },
@@ -337,7 +345,7 @@ export const Router: Array<RouteRecordRaw> = [
     },
     name: 'filter',
     component: () =>
-      import(/* webpackChunkName: "filter" */ '@/views/filter/index.vue')
+      import(/* webpackChunkName: "filter" */ '@/views/filter.vue')
   },
 
 ]

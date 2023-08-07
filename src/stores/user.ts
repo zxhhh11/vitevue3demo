@@ -3,13 +3,14 @@ import { defineStore } from "pinia";
 
 export const useUserStore = defineStore("user", () => {
   const user = ref('');
+  const test = ref('test for persist');
   const customer = ref({
     customerName: '赵某某',
     IDtype: '身份证',
     IDNo: '292848490839894848',
     cardNo: '6481322784654',
     customerNo: '55874411',
-    customerType: 'VIP'
+    customerType: 'VIPa'
   })
   /********
    *  doubleCount这么定义 属于gettters 即还是状态值  所以在组件中使用可以用storeToRefs使用 标签中使用时直接用
@@ -25,10 +26,24 @@ export const useUserStore = defineStore("user", () => {
     }, 1000)
 
   }
+  function changeTest() {
+    console.log(test, 'test')
+    test.value = test.value + 'ohohoh computed'
+  }
+
   // getters
   // function doubleCount() { //doubleCount这么定义相当于function 所以组件内使用时直接解构就行了
 
   //   return count.value * 2;
   // }
-  return { user, customer, addUser, changeUser };
-});
+  return { user, customer, test, addUser, changeUser, changeTest };
+}, {
+  persist: true
+  //  [
+  //   { // 两种方法都生效
+  //     paths: ['test'],
+  //     storage: sessionStorage
+  //   }
+  // ]
+}
+);

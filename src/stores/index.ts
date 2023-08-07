@@ -17,7 +17,7 @@ export { }  //需要使用时此行代码应该删除
 /*********
  * piana  可以有两种写法  1. 与setup 同样语法糖的写法
  * 细节参考 useUserStore
- *  页面引入时 使用state 需要使用storeToRefs 先对其进行解构（也可以不解构直接调用）
+ *  页面引入时 使用state 需要使用storeToRefs 先对其进行解构 (为了从 Store 中提取属性，同时保持其响应性，这里需要使用storeToRefs()  )
  * 使用useUserStore中定义的方法时直接解构
  * 在Setup式中：ref()成为state属性，computed()变成getters,function变成actions
  *
